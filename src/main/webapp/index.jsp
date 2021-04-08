@@ -140,7 +140,7 @@
                 <li><a href="./blog-details.html">Blog Details</a></li>
               </ul>
             </li>
-            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="blog.jsp">Blog</a></li>
             <li><a href="./contact.html">Liên hệ</a></li>
           </ul>
         </nav>

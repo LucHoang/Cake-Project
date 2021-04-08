@@ -12,5 +12,5 @@ com/cakemanager/model/Orders.java
  com.cakemanager.model.Orders
 com/cakemanager/model/Blog.java
  com.cakemanager.model.Blog
-com/cakemanager/controller/ServletTest.java
- com.cakemanager.controller.ServletTest
+com/cakemanager/controller/IndexServlet.java
+ com.cakemanager.controller.IndexServlet
