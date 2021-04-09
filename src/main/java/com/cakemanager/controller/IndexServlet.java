@@ -1,5 +1,8 @@
 package com.cakemanager.controller;
 
+import com.cakemanager.service.IndexService;
+import com.cakemanager.model.Product;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -9,6 +12,13 @@ import java.util.List;
 
 @WebServlet(name = "IndexServlet", value = "/index")
 public class IndexServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    private IndexService indexService;
+
+    public void init() {
+        indexService = new IndexService();
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -46,8 +56,8 @@ public class IndexServlet extends HttpServlet {
     }
 
     private void listProducts(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
-//        List<Product> products = this.productService.findAll();
-//        request.setAttribute("products", products);
+        List<Product> products = this.indexService.selectAllUsers();
+        request.setAttribute("products", products);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("cakeUI/index.jsp");
         try {

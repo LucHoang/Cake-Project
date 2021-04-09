@@ -2,17 +2,25 @@ com/cakemanager/model/Category.java
  com.cakemanager.model.Category
 com/cakemanager/model/OrderDetails.java
  com.cakemanager.model.OrderDetails
-com/cakemanager/controller/LoginServlet.java
- com.cakemanager.controller.LoginServlet
+com/cakemanager/model/Blog.java
+ com.cakemanager.model.Blog
+com/cakemanager/model/Orders.java
+ com.cakemanager.model.Orders
+com/cakemanager/model/Account.java
+ com.cakemanager.model.Account
 com/cakemanager/model/Product.java
  com.cakemanager.model.Product
 com/cakemanager/model/Customer.java
  com.cakemanager.model.Customer
-com/cakemanager/model/Orders.java
- com.cakemanager.model.Orders
-com/cakemanager/model/Blog.java
- com.cakemanager.model.Blog
-com/cakemanager/model/Account.java
- com.cakemanager.model.Account
+com/cakemanager/service/LoginService.java
+ com.cakemanager.service.LoginService
 com/cakemanager/controller/IndexServlet.java
  com.cakemanager.controller.IndexServlet
+com/cakemanager/controller/LoginServlet.java
+ com.cakemanager.controller.LoginServlet
+com/cakemanager/service/DatabaseConection.java
+ com.cakemanager.service.DatabaseConection
+com/cakemanager/service/IndexService.java
+ com.cakemanager.service.IndexService
+com/cakemanager/service/IIndexService.java
+ com.cakemanager.service.IIndexService

@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Lenovo
-  Date: 4/8/2021
-  Time: 3:15 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -15,7 +9,7 @@
   <meta name="keywords" content="Cake, unica, creative, html">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Cake | Template</title>
+  <title>Cake | C1220G1</title>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
@@ -38,9 +32,9 @@
 
 <body>
 <!-- Page Preloder -->
-<div id="preloder">
-  <div class="loader"></div>
-</div>
+<%--<div id="preloder">--%>
+<%--  <div class="loader"></div>--%>
+<%--</div>--%>
 
 <!-- Offcanvas Menu Begin -->
 <div class="offcanvas-menu-overlay"></div>
@@ -56,7 +50,7 @@
     </div>
   </div>
   <div class="offcanvas__logo">
-    <a href="./index.html"><img src="img/logo.png" alt=""></a>
+    <a href="index.jsp"><img src="img/logo.png" alt=""></a>
   </div>
   <div id="mobile-menu-wrap"></div>
   <div class="offcanvas__option">
@@ -104,7 +98,7 @@
               </ul>
             </div>
             <div class="header__logo">
-              <a href="./index.html"><img src="img/logo.png" alt=""></a>
+              <a href="index.jsp"><img src="img/logo.png" alt=""></a>
             </div>
             <div class="header__top__right">
               <div class="header__top__right__links">
@@ -138,10 +132,23 @@
                 <li><a href="./wisslist.html">Wisslist</a></li>
                 <li><a href="./Class.html">Class</a></li>
                 <li><a href=".cakeUI/blog-details.jsp">Blog Details</a></li>
+
+            <li class="active" name = ><a href="index.jsp">Trang chủ</a></li>
+            <li><a href="./about.jsp">Giới thiệu</a></li>
+            <li><a href="./shop.jsp">Cửa hàng</a></li>
+            <li><a href="#">Pages</a>
+              <ul class="dropdown">
+                <li><a href="./shop-details.jsp">Shop Details</a></li>
+                <li><a href="./shoping-cart.jsp">Shoping Cart</a></li>
+                <li><a href="./checkout.jsp">Check Out</a></li>
+                <li><a href="./wisslist.jsp">Wisslist</a></li>
+                <li><a href="./class.jsp">Class</a></li>
+                <li><a href="./blog-details.jsp">Blog Details</a></li>
               </ul>
             </li>
-            <li><a href="blog.jsp">Blog</a></li>
-            <li><a href="./contact.html">Liên hệ</a></li>
+            <li><a href="./blog.jsp">Blog</a></li>
+            <li><a href="./contact.jsp">Liên hệ</a></li>
+          </ul>
           </ul>
         </nav>
       </div>
@@ -276,134 +283,136 @@
 <section class="product spad">
   <div class="container">
     <div class="row">
+<c:forEach items='${requestScope["products"]}' var="product" begin="1" end="8">
       <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="product__item">
-          <div class="product__item__pic set-bg" data-setbg="img/shop/product-1.jpg">
-            <div class="product__label">
-              <span>Cupcake</span>
-            </div>
+          <div class="product__item__pic set-bg" data-setbg="${product.getThumbnail()}">
+<%--            <div class="product__label">--%>
+<%--              <span>${product.getCategoryId()}</span>--%>
+<%--            </div>--%>
           </div>
           <div class="product__item__text">
-            <h6><a href="#">Dozen Cupcakes</a></h6>
-            <div class="product__item__price">$32.00</div>
+            <h6><a href="#">${product.getName()}</a></h6>
+            <div class="product__item__price">${product.getUnitPrice()} $</div>
             <div class="cart_add">
               <a href="#">Thêm vào giỏ hàng</a>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="product__item">
-          <div class="product__item__pic set-bg" data-setbg="img/shop/product-2.jpg">
-            <div class="product__label">
-              <span>Cupcake</span>
-            </div>
-          </div>
-          <div class="product__item__text">
-            <h6><a href="#">COOKIES AND CREAM</a></h6>
-            <div class="product__item__price">$30.00</div>
-            <div class="cart_add">
-              <a href="#">Thêm vào giỏ hàng</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="product__item">
-          <div class="product__item__pic set-bg" data-setbg="img/shop/product-3.jpg">
-            <div class="product__label">
-              <span>Cupcake</span>
-            </div>
-          </div>
-          <div class="product__item__text">
-            <h6><a href="#">Gluten Free Mini Dozen</a></h6>
-            <div class="product__item__price">$31.00</div>
-            <div class="cart_add">
-              <a href="#">Thêm vào giỏ hàng</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="product__item">
-          <div class="product__item__pic set-bg" data-setbg="img/shop/product-4.jpg">
-            <div class="product__label">
-              <span>Cupcake</span>
-            </div>
-          </div>
-          <div class="product__item__text">
-            <h6><a href="#">Cookie Dough</a></h6>
-            <div class="product__item__price">$25.00</div>
-            <div class="cart_add">
-              <a href="#">Thêm vào giỏ hàng</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="product__item">
-          <div class="product__item__pic set-bg" data-setbg="img/shop/product-5.jpg">
-            <div class="product__label">
-              <span>Cupcake</span>
-            </div>
-          </div>
-          <div class="product__item__text">
-            <h6><a href="#">Vanilla Salted Caramel</a></h6>
-            <div class="product__item__price">$05.00</div>
-            <div class="cart_add">
-              <a href="#">Thêm vào giỏ hàng</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="product__item">
-          <div class="product__item__pic set-bg" data-setbg="img/shop/product-6.jpg">
-            <div class="product__label">
-              <span>Cupcake</span>
-            </div>
-          </div>
-          <div class="product__item__text">
-            <h6><a href="#">German Chocolate</a></h6>
-            <div class="product__item__price">$14.00</div>
-            <div class="cart_add">
-              <a href="#">Thêm vào giỏ hàng</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="product__item">
-          <div class="product__item__pic set-bg" data-setbg="img/shop/product-7.jpg">
-            <div class="product__label">
-              <span>Cupcake</span>
-            </div>
-          </div>
-          <div class="product__item__text">
-            <h6><a href="#">Dulce De Leche</a></h6>
-            <div class="product__item__price">$32.00</div>
-            <div class="cart_add">
-              <a href="#">Thêm vào giỏ hàng</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="product__item">
-          <div class="product__item__pic set-bg" data-setbg="img/shop/product-8.jpg">
-            <div class="product__label">
-              <span>Cupcake</span>
-            </div>
-          </div>
-          <div class="product__item__text">
-            <h6><a href="#">Mississippi Mud</a></h6>
-            <div class="product__item__price">$08.00</div>
-            <div class="cart_add">
-              <a href="#">Thêm vào giỏ hàng</a>
-            </div>
-          </div>
-        </div>
-      </div>
+</c:forEach>
+<%--      <div class="col-lg-3 col-md-6 col-sm-6">--%>
+<%--        <div class="product__item">--%>
+<%--          <div class="product__item__pic set-bg" data-setbg="img/shop/product-2.jpg">--%>
+<%--            <div class="product__label">--%>
+<%--              <span>Cupcake</span>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--          <div class="product__item__text">--%>
+<%--            <h6><a href="#">COOKIES AND CREAM</a></h6>--%>
+<%--            <div class="product__item__price">$30.00</div>--%>
+<%--            <div class="cart_add">--%>
+<%--              <a href="#">Thêm vào giỏ hàng</a>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--        </div>--%>
+<%--      </div>--%>
+<%--      <div class="col-lg-3 col-md-6 col-sm-6">--%>
+<%--        <div class="product__item">--%>
+<%--          <div class="product__item__pic set-bg" data-setbg="img/shop/product-3.jpg">--%>
+<%--            <div class="product__label">--%>
+<%--              <span>Cupcake</span>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--          <div class="product__item__text">--%>
+<%--            <h6><a href="#">Gluten Free Mini Dozen</a></h6>--%>
+<%--            <div class="product__item__price">$31.00</div>--%>
+<%--            <div class="cart_add">--%>
+<%--              <a href="#">Thêm vào giỏ hàng</a>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--        </div>--%>
+<%--      </div>--%>
+<%--      <div class="col-lg-3 col-md-6 col-sm-6">--%>
+<%--        <div class="product__item">--%>
+<%--          <div class="product__item__pic set-bg" data-setbg="img/shop/product-4.jpg">--%>
+<%--            <div class="product__label">--%>
+<%--              <span>Cupcake</span>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--          <div class="product__item__text">--%>
+<%--            <h6><a href="#">Cookie Dough</a></h6>--%>
+<%--            <div class="product__item__price">$25.00</div>--%>
+<%--            <div class="cart_add">--%>
+<%--              <a href="#">Thêm vào giỏ hàng</a>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--        </div>--%>
+<%--      </div>--%>
+<%--      <div class="col-lg-3 col-md-6 col-sm-6">--%>
+<%--        <div class="product__item">--%>
+<%--          <div class="product__item__pic set-bg" data-setbg="img/shop/product-5.jpg">--%>
+<%--            <div class="product__label">--%>
+<%--              <span>Cupcake</span>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--          <div class="product__item__text">--%>
+<%--            <h6><a href="#">Vanilla Salted Caramel</a></h6>--%>
+<%--            <div class="product__item__price">$05.00</div>--%>
+<%--            <div class="cart_add">--%>
+<%--              <a href="#">Thêm vào giỏ hàng</a>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--        </div>--%>
+<%--      </div>--%>
+<%--      <div class="col-lg-3 col-md-6 col-sm-6">--%>
+<%--        <div class="product__item">--%>
+<%--          <div class="product__item__pic set-bg" data-setbg="img/shop/product-6.jpg">--%>
+<%--            <div class="product__label">--%>
+<%--              <span>Cupcake</span>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--          <div class="product__item__text">--%>
+<%--            <h6><a href="#">German Chocolate</a></h6>--%>
+<%--            <div class="product__item__price">$14.00</div>--%>
+<%--            <div class="cart_add">--%>
+<%--              <a href="#">Thêm vào giỏ hàng</a>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--        </div>--%>
+<%--      </div>--%>
+<%--      <div class="col-lg-3 col-md-6 col-sm-6">--%>
+<%--        <div class="product__item">--%>
+<%--          <div class="product__item__pic set-bg" data-setbg="img/shop/product-7.jpg">--%>
+<%--            <div class="product__label">--%>
+<%--              <span>Cupcake</span>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--          <div class="product__item__text">--%>
+<%--            <h6><a href="#">Dulce De Leche</a></h6>--%>
+<%--            <div class="product__item__price">$32.00</div>--%>
+<%--            <div class="cart_add">--%>
+<%--              <a href="#">Thêm vào giỏ hàng</a>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--        </div>--%>
+<%--      </div>--%>
+<%--      <div class="col-lg-3 col-md-6 col-sm-6">--%>
+<%--        <div class="product__item">--%>
+<%--          <div class="product__item__pic set-bg" data-setbg="img/shop/product-8.jpg">--%>
+<%--            <div class="product__label">--%>
+<%--              <span>Cupcake</span>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--          <div class="product__item__text">--%>
+<%--            <h6><a href="#">Mississippi Mud</a></h6>--%>
+<%--            <div class="product__item__price">$08.00</div>--%>
+<%--            <div class="cart_add">--%>
+<%--              <a href="#">Thêm vào giỏ hàng</a>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--        </div>--%>
+<%--      </div>--%>
     </div>
   </div>
 </section>
