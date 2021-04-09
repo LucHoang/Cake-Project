@@ -46,11 +46,8 @@ public class IndexServlet extends HttpServlet {
                 //findByName(request, response);
                 break;
             case "showProductCategory":
-                try {
-                    showProductCategory(request, response);
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
+                showProductCategory(request, response);
+
                 break;
             default:
                 listProducts(request, response);
@@ -76,14 +73,13 @@ public class IndexServlet extends HttpServlet {
     }
 
     private void showProductCategory(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, ServletException, IOException {
+            throws IOException, ServletException {
         int categoryId = Integer.parseInt(request.getParameter("id"));
 
-        Product existingUser = indexService.selectUser(categoryId);
+        List<Product> products = this.indexService.selectUser(categoryId);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cakeUI/edit.jsp");
-        request.setAttribute("user", existingUser);
+        request.setAttribute("products", products);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("cakeUI/index.jsp");
         dispatcher.forward(request, response);
-
     }
 }

@@ -4,8 +4,8 @@ com/cakemanager/controller/IndexServlet.java
  com.cakemanager.controller.IndexServlet
 com/cakemanager/model/Product.java
  com.cakemanager.model.Product
-com/cakemanager/model/Customer.java
- com.cakemanager.model.Customer
+com/cakemanager/controller/LoginServlet.java
+ com.cakemanager.controller.LoginServlet
 com/cakemanager/model/Orders.java
  com.cakemanager.model.Orders
 com/cakemanager/service/DatabaseConection.java
@@ -18,9 +18,9 @@ com/cakemanager/model/Account.java
  com.cakemanager.model.Account
 com/cakemanager/model/Category.java
  com.cakemanager.model.Category
-com/cakemanager/service/IndexService.java
- com.cakemanager.service.IndexService
 com/cakemanager/service/LoginService.java
  com.cakemanager.service.LoginService
-com/cakemanager/controller/LoginServlet.java
- com.cakemanager.controller.LoginServlet
+com/cakemanager/model/Customer.java
+ com.cakemanager.model.Customer
+com/cakemanager/service/IndexService.java
+ com.cakemanager.service.IndexService
