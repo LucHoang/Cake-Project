@@ -30,118 +30,118 @@
 </head>
 
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
+<%--    <!-- Page Preloder -->--%>
+<%--    <div id="preloder">--%>
+<%--        <div class="loader"></div>--%>
+<%--    </div>--%>
 
-    <!-- Offcanvas Menu Begin -->
-    <div class="offcanvas-menu-overlay"></div>
-    <div class="offcanvas-menu-wrapper">
-        <div class="offcanvas__cart">
-            <div class="offcanvas__cart__links">
-                <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                <a href="#"><img src="img/icon/heart.png" alt=""></a>
-            </div>
-            <div class="offcanvas__cart__item">
-                <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-                <div class="cart__price">Giỏ hàng: <span>$0.00</span></div>
-            </div>
+<!-- Offcanvas Menu Begin -->
+<div class="offcanvas-menu-overlay"></div>
+<div class="offcanvas-menu-wrapper">
+    <div class="offcanvas__cart">
+        <div class="offcanvas__cart__links">
+            <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
+            <a href="#"><img src="img/icon/heart.png" alt=""></a>
         </div>
-        <div class="offcanvas__logo">
-            <a href="./index.html"><img src="img/logo.png" alt=""></a>
-        </div>
-        <div id="mobile-menu-wrap"></div>
-        <div class="offcanvas__option">
-            <ul>
-                <li>USD <span class="arrow_carrot-down"></span>
-                    <ul>
-                        <li>VNĐ</li>
-                        <li>USD</li>
-                    </ul>
-                </li>
-                <li>ENG <span class="arrow_carrot-down"></span>
-                    <ul>
-                        <li>Vietnamese</li>
-                        <li>ENG</li>
-                    </ul>
-                </li>
-                <li><a href="#">Đăng nhập</a> <span class="arrow_carrot-down"></span></li>
-            </ul>
+        <div class="offcanvas__cart__item">
+            <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+            <div class="cart__price">Giỏ hàng: <span>$0.00</span></div>
         </div>
     </div>
-    <!-- Offcanvas Menu End -->
+    <div class="offcanvas__logo">
+        <a href="index.jsp"><img src="img/logo.png" alt=""></a>
+    </div>
+    <div id="mobile-menu-wrap"></div>
+    <div class="offcanvas__option">
+        <ul>
+            <li>USD <span class="arrow_carrot-down"></span>
+                <ul>
+                    <li>VNĐ</li>
+                    <li>USD</li>
+                </ul>
+            </li>
+            <li>ENG <span class="arrow_carrot-down"></span>
+                <ul>
+                    <li>Vietnamese</li>
+                    <li>ENG</li>
+                </ul>
+            </li>
+            <li><a href="#">Đăng nhập</a> <span class="arrow_carrot-down"></span></li>
+        </ul>
+    </div>
+</div>
+<!-- Offcanvas Menu End -->
 
-    <!-- Header Section Begin -->
-    <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="header__top__inner">
-                            <div class="header__top__left">
-                                <ul>
-                                    <li>USD <span class="arrow_carrot-down"></span>
-                                        <ul>
-                                            <li>VNĐ</li>
-                                            <li>USD</li>
-                                        </ul>
-                                    </li>
-                                    <li>ENG <span class="arrow_carrot-down"></span>
-                                        <ul>
-                                            <li>Vietnamese</li>
-                                            <li>ENG</li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Đăng nhập</a> <span class="arrow_carrot-down"></span></li>
-                                </ul>
+<!-- Header Section Begin -->
+<header class="header">
+    <div class="header__top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="header__top__inner">
+                        <div class="header__top__left">
+                            <ul>
+                                <li>USD <span class="arrow_carrot-down"></span>
+                                    <ul>
+                                        <li>VNĐ</li>
+                                        <li>USD</li>
+                                    </ul>
+                                </li>
+                                <li>ENG <span class="arrow_carrot-down"></span>
+                                    <ul>
+                                        <li>Vietnamese</li>
+                                        <li>ENG</li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Đăng nhập</a> <span class="arrow_carrot-down"></span></li>
+                            </ul>
+                        </div>
+                        <div class="header__logo">
+                            <a href="index.jsp"><img src="img/logo.png" alt=""></a>
+                        </div>
+                        <div class="header__top__right">
+                            <div class="header__top__right__links">
+                                <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
+                                <a href="#"><img src="img/icon/heart.png" alt=""></a>
                             </div>
-                            <div class="header__logo">
-                                <a href="./index.html"><img src="img/logo.png" alt=""></a>
-                            </div>
-                            <div class="header__top__right">
-                                <div class="header__top__right__links">
-                                    <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                                    <a href="#"><img src="img/icon/heart.png" alt=""></a>
-                                </div>
-                                <div class="header__top__right__cart">
-                                    <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-                                    <div class="cart__price">Giỏ hàng: <span>$0.00</span></div>
-                                </div>
+                            <div class="header__top__right__cart">
+                                <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                                <div class="cart__price">Giỏ hàng: <span>$0.00</span></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="canvas__open"><i class="fa fa-bars"></i></div>
+            </div>
+            <div class="canvas__open"><i class="fa fa-bars"></i></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="header__menu mobile-menu">
+                    <ul>
+                        <li class="active" name = ><a href="index.jsp">Trang chủ</a></li>
+                        <li><a href="./about.jsp">Giới thiệu</a></li>
+                        <li><a href="./shop.jsp">Cửa hàng</a></li>
+                        <li><a href="#">Pages</a>
+                            <ul class="dropdown">
+                                <li><a href="./shop-details.jsp">Shop Details</a></li>
+                                <li><a href="./shoping-cart.jsp">Shoping Cart</a></li>
+                                <li><a href="./checkout.jsp">Check Out</a></li>
+                                <li><a href="./wisslist.jsp">Wisslist</a></li>
+                                <li><a href="./class.jsp">Class</a></li>
+                                <li><a href="./blog-details.jsp">Blog Details</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./blog.jsp">Blog</a></li>
+                        <li><a href="./contact.jsp">Liên hệ</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <nav class="header__menu mobile-menu">
-                        <ul>
-                            <li class="active"><a href="./index.html">Trang chủ</a></li>
-                            <li><a href="about.jsp">Giới thiệu</a></li>
-                            <li><a href="shop.jsp">Cửa hàng</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="shop-details.jsp">Shop Details</a></li>
-                                    <li><a href="shoping-cart.jsp">Shoping Cart</a></li>
-                                    <li><a href="checkout.jsp">Check Out</a></li>
-                                    <li><a href="wisslist.jsp">Wisslist</a></li>
-                                    <li><a href="./Class.html">Class</a></li>
-                                    <li><a href="blog-details.jsp">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="./blog.jsp">Blog</a></li>
-                            <li><a href="contact.jsp">Liên hệ</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- Header Section End -->
+    </div>
+</header>
+<!-- Header Section End -->
 
     <!-- Breadcrumb Begin -->
     <div class="breadcrumb-option">
