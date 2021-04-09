@@ -8,7 +8,7 @@ import java.util.List;
 public interface IIndexService {
      void insertUser(Product product) throws SQLException;
 
-     Product selectUser(int id);
+     List<Product> selectUser(int id);
 
      List<Product> selectAllUsers();
 
