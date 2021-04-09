@@ -8,6 +8,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet(name = "IndexServlet", value = "/index")
@@ -44,6 +45,13 @@ public class IndexServlet extends HttpServlet {
             case "find":
                 //findByName(request, response);
                 break;
+            case "showProductCategory":
+                try {
+                    showProductCategory(request, response);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                break;
             default:
                 listProducts(request, response);
                 break;
@@ -65,5 +73,17 @@ public class IndexServlet extends HttpServlet {
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void showProductCategory(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, ServletException, IOException {
+        int categoryId = Integer.parseInt(request.getParameter("id"));
+
+        Product existingUser = indexService.selectUser(categoryId);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("cakeUI/edit.jsp");
+        request.setAttribute("user", existingUser);
+        dispatcher.forward(request, response);
+
     }
 }
