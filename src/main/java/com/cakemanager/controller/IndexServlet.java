@@ -46,11 +46,7 @@ public class IndexServlet extends HttpServlet {
                 //findByName(request, response);
                 break;
             case "showProductCategory":
-                try {
-                    showProductCategory(request, response);
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
+                showProductCategory(request, response);
                 break;
             default:
                 listProducts(request, response);

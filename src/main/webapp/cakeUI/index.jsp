@@ -246,7 +246,7 @@
         <div class="categories__item">
           <div class="categories__item__icon">
             <span class="flaticon-034-chocolate-roll"></span>
-            <h5><a href="/index?action=showProductCategory&id=${products.getCategoryId()}">Bơ</a></h5>
+            <h5><a href="/index?action=showProductCategory&id=1">Bơ</a></h5>
           </div>
         </div>
         <div class="categories__item">

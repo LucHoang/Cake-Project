@@ -7,9 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IndexService implements IIndexService {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/cake";
-    private String jdbcUsername = "root";
-    private String jdbcPassword = "1299";
 
     //private static final String INSERT_USERS_SQL = "INSERT INTO products" + "  (name, email, country) VALUES " + " (?, ?, ?);";
 
@@ -23,20 +20,6 @@ public class IndexService implements IIndexService {
 
     }
 
-    protected Connection getConnection() {
-        Connection connection = null;
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return connection;
-    }
 
 
     @Override
@@ -54,7 +37,7 @@ public class IndexService implements IIndexService {
         // using try-with-resources to avoid closing resources (boiler plate code)
         List<Product> products = new ArrayList<>();
         // Step 1: Establishing a Connection
-        try (Connection connection = getConnection();
+        try (Connection connection = DatabaseConection.getConnection();
 
              // Step 2:Create a statement using connection object
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);) {
