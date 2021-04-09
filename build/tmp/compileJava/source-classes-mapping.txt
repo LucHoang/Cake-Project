@@ -2,21 +2,44 @@ com/cakemanager/model/Category.java
  com.cakemanager.model.Category
 com/cakemanager/model/OrderDetails.java
  com.cakemanager.model.OrderDetails
+<<<<<<< HEAD
 com/cakemanager/controller/IndexServlet.java
  com.cakemanager.controller.IndexServlet
+=======
+com/cakemanager/model/Blog.java
+ com.cakemanager.model.Blog
+com/cakemanager/model/Orders.java
+ com.cakemanager.model.Orders
+com/cakemanager/model/Account.java
+ com.cakemanager.model.Account
+>>>>>>> 3f02c6b07f769d24ba900ae857869f600386754e
 com/cakemanager/model/Product.java
  com.cakemanager.model.Product
 com/cakemanager/controller/LoginServlet.java
  com.cakemanager.controller.LoginServlet
 com/cakemanager/model/Customer.java
  com.cakemanager.model.Customer
+<<<<<<< HEAD
 com/cakemanager/model/Orders.java
  com.cakemanager.model.Orders
 com/cakemanager/model/Blog.java
  com.cakemanager.model.Blog
+=======
+com/cakemanager/service/LoginService.java
+ com.cakemanager.service.LoginService
+com/cakemanager/controller/IndexServlet.java
+ com.cakemanager.controller.IndexServlet
+com/cakemanager/controller/LoginServlet.java
+ com.cakemanager.controller.LoginServlet
+com/cakemanager/service/DatabaseConection.java
+ com.cakemanager.service.DatabaseConection
+>>>>>>> 3f02c6b07f769d24ba900ae857869f600386754e
 com/cakemanager/service/IndexService.java
  com.cakemanager.service.IndexService
 com/cakemanager/service/IIndexService.java
  com.cakemanager.service.IIndexService
+<<<<<<< HEAD
 com/cakemanager/model/Account.java
  com.cakemanager.model.Account
+=======
+>>>>>>> 3f02c6b07f769d24ba900ae857869f600386754e

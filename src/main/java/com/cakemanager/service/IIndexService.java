@@ -6,15 +6,17 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface IIndexService {
-    public void insertUser(Product product) throws SQLException;
+     void insertUser(Product product) throws SQLException;
 
-    public Product selectUser(int id);
+     Product selectUser(int id);
 
-    public List<Product> selectAllUsers();
+     List<Product> selectAllUsers();
 
-    public boolean deleteUser(int id) throws SQLException;
+     boolean deleteUser(int id) throws SQLException;
 
-    public boolean updateUser(Product product) throws SQLException;
+     boolean updateUser(Product product) throws SQLException;
 
-    public Product getUserById(int id);
+     Product getUserById(int id);
+
+
 }
