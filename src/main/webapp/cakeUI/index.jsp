@@ -73,7 +73,7 @@
           <li>ENG</li>
         </ul>
       </li>
-      <li><a href="#">Đăng nhập</a> <span class="arrow_carrot-down"></span></li>
+      <li><a href="./cakeUI/login.jsp">Đăng nhập</a> <span class="arrow_carrot-down"></span></li>
     </ul>
   </div>
 </div>
@@ -100,7 +100,7 @@
                     <li>ENG</li>
                   </ul>
                 </li>
-                <li><a href="#">Đăng nhập</a> <span class="arrow_carrot-down"></span></li>
+                <li><a href="./cakeUI/login.jsp">Đăng nhập</a> <span class="arrow_carrot-down"></span></li>
               </ul>
             </div>
             <div class="header__logo">
@@ -127,7 +127,7 @@
       <div class="col-lg-12">
         <nav class="header__menu mobile-menu">
           <ul>
-            <li class="active"><a href="./index.html">Trang chủ</a></li>
+            <li class="active"><a href="./index.jsp">Trang chủ</a></li>
             <li><a href="./about.html">Giới thiệu</a></li>
             <li><a href="./shop.html">Cửa hàng</a></li>
             <li><a href="#">Pages</a>
@@ -137,7 +137,7 @@
                 <li><a href="./checkout.html">Check Out</a></li>
                 <li><a href="./wisslist.html">Wisslist</a></li>
                 <li><a href="./Class.html">Class</a></li>
-                <li><a href="./blog-details.html">Blog Details</a></li>
+                <li><a href=".cakeUI/blog-details.jsp">Blog Details</a></li>
               </ul>
             </li>
             <li><a href="blog.jsp">Blog</a></li>

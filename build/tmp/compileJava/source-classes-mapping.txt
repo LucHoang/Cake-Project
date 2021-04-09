@@ -2,8 +2,8 @@ com/cakemanager/model/Category.java
  com.cakemanager.model.Category
 com/cakemanager/model/OrderDetails.java
  com.cakemanager.model.OrderDetails
-com/cakemanager/controller/IndexServlet.java
- com.cakemanager.controller.IndexServlet
+com/cakemanager/controller/LoginServlet.java
+ com.cakemanager.controller.LoginServlet
 com/cakemanager/model/Product.java
  com.cakemanager.model.Product
 com/cakemanager/model/Customer.java
@@ -14,3 +14,5 @@ com/cakemanager/model/Blog.java
  com.cakemanager.model.Blog
 com/cakemanager/model/Account.java
  com.cakemanager.model.Account
+com/cakemanager/controller/IndexServlet.java
+ com.cakemanager.controller.IndexServlet

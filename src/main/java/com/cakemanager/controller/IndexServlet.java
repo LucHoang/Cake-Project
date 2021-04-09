@@ -49,7 +49,7 @@ public class IndexServlet extends HttpServlet {
 //        List<Product> products = this.productService.findAll();
 //        request.setAttribute("products", products);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cakeUI/about.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("cakeUI/index.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
