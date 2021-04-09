@@ -25,10 +25,11 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userName = request.getParameter("userName");
         String passWord = request.getParameter("passWord");
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("cakeUI/index.jsp");
+        String url = "";
         if(!this.loginService.checkLogin(userName,passWord)){
-            request.getRequestDispatcher("cakeUI/login.jsp");
-        }
+            url = "cakeUI/login.jsp";
+        }else{ url = "cakeUI/index.jsp";}
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(url);
         requestDispatcher.forward(request,response);
     }
 

@@ -20,6 +20,7 @@ public class LoginService {
                 preparedStatement.setString(1,userName);
                 preparedStatement.setString(2,password);
                 ResultSet resultSet = preparedStatement.executeQuery();
+                System.out.println(preparedStatement);
                 if (resultSet.next()) {
                     return true;
                 }
