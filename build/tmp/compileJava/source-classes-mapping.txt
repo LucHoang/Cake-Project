@@ -20,7 +20,7 @@ com/cakemanager/controller/LoginServlet.java
  com.cakemanager.controller.LoginServlet
 com/cakemanager/service/DatabaseConection.java
  com.cakemanager.service.DatabaseConection
-com/cakemanager/controller/IndexServlet.java
- com.cakemanager.controller.IndexServlet
 com/cakemanager/service/IndexService.java
  com.cakemanager.service.IndexService
+com/cakemanager/controller/IndexServlet.java
+ com.cakemanager.controller.IndexServlet

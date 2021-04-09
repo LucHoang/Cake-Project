@@ -10,7 +10,7 @@ public class IndexService implements IIndexService {
 
     //private static final String INSERT_USERS_SQL = "INSERT INTO products" + "  (name, email, country) VALUES " + " (?, ?, ?);";
 
-    private static final String SELECT_USER_BY_ID = "select id,name,email,country from products where categoryId =?";
+    private static final String SELECT_USER_BY_ID = "select id,name,email,country from products where id =?";
     private static final String SELECT_PRODUCT_BY_ID = "select * from products where categoryId =?";
     private static final String SELECT_ALL_USERS = "select * from products";
     private static final String SELECT_CATEGORY_NAME = "select category.name from category join products on category.categoryId = products.categoryId where productId = ?";
