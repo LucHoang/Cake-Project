@@ -10,14 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoginService {
-    private static final String CHECK_USER_PASSWORD_SQL = "select * from account where userName = ? and password = ?";
+    private static final String CHECK_USER_PASSWORD_SQL = "select * from account where email = ? and password = ?";
 
-    public boolean checkLogin(String userName,String password){
+    public boolean checkLogin(String email,String password){
         Connection connection = DatabaseConection.getConnection();
         if (connection != null) {
             try {
                 PreparedStatement preparedStatement = connection.prepareStatement(CHECK_USER_PASSWORD_SQL);
-                preparedStatement.setString(1,userName);
+                preparedStatement.setString(1,email);
                 preparedStatement.setString(2,password);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 System.out.println(preparedStatement);

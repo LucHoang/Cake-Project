@@ -64,7 +64,7 @@ public class IndexServlet extends HttpServlet {
         List<Product> products = this.indexService.selectAllUsers();
         request.setAttribute("products", products);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cakeUI/index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
@@ -79,7 +79,7 @@ public class IndexServlet extends HttpServlet {
         List<Product> products = this.indexService.selectUser(categoryId);
 
         request.setAttribute("products", products);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cakeUI/index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
     }
 }

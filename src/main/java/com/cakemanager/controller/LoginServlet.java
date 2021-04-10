@@ -27,8 +27,8 @@ public class LoginServlet extends HttpServlet {
         String passWord = request.getParameter("passWord");
         String url = "";
         if(!this.loginService.checkLogin(userName,passWord)){
-            url = "cakeUI/login.jsp";
-        }else{ url = "cakeUI/index.jsp";}
+            url = "/login.jsp";
+        }else{ url = "/index.jsp";}
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(url);
         requestDispatcher.forward(request,response);
     }
