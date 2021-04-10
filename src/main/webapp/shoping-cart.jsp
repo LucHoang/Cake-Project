@@ -155,7 +155,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="breadcrumb__links">
-                        <a href="./index.html">Home</a>
+                        <a href="/index?action=showProductCategory&id=1">Home</a>
                         <span>Shopping cart</span>
                     </div>
                 </div>

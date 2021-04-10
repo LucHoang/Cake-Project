@@ -97,7 +97,7 @@
                             </ul>
                         </div>
                         <div class="header__logo">
-                            <a href="index.jsp"><img src="img/logo.png" alt=""></a>
+                            <a href="/index?action=showProductCategory&id=1"><img src="img/logo.png" alt=""></a>
                         </div>
                         <div class="header__top__right">
                             <div class="header__top__right__links">
@@ -120,7 +120,7 @@
             <div class="col-lg-12">
                 <nav class="header__menu mobile-menu">
                     <ul>
-                        <li class="active" name = ><a href="index.jsp">Trang chủ</a></li>
+                        <li class="active" name = ><a href="/index?action=showProductCategory&id=1">Trang chủ</a></li>
                         <li><a href="./about.jsp">Giới thiệu</a></li>
                         <li><a href="./shop.jsp">Cửa hàng</a></li>
                         <li><a href="#">Pages</a>
