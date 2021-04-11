@@ -8,14 +8,14 @@ import java.util.List;
 
 public class IndexService implements IIndexService {
 
-    //private static final String INSERT_USERS_SQL = "INSERT INTO products" + "  (name, email, country) VALUES " + " (?, ?, ?);";
+    //private static final String INSERT_ProductS_SQL = "INSERT INTO products" + "  (name, email, country) VALUES " + " (?, ?, ?);";
 
-    private static final String SELECT_USER_BY_ID = "select id,name,email,country from products where id =?";
+    private static final String SELECT_Product_BY_ID = "select id,name,email,country from products where id =?";
     private static final String SELECT_PRODUCT_BY_ID = "select * from products where categoryId =?";
-    private static final String SELECT_ALL_USERS = "select * from products";
+    private static final String SELECT_ALL_ProductS = "select * from products";
     private static final String SELECT_CATEGORY_NAME = "select category.name from category join products on category.categoryId = products.categoryId where productId = ?";
-    private static final String DELETE_USERS_SQL = "delete from products where id = ?;";
-    private static final String UPDATE_USERS_SQL = "update products set name = ?,email= ?, country =? where id = ?;";
+    private static final String DELETE_ProductS_SQL = "delete from products where id = ?;";
+    private static final String UPDATE_ProductS_SQL = "update products set name = ?,email= ?, country =? where id = ?;";
 
     public IndexService() {
 
@@ -24,12 +24,12 @@ public class IndexService implements IIndexService {
 
 
     @Override
-    public void insertUser(Product product) throws SQLException {
+    public void insertProduct(Product product) throws SQLException {
 
     }
 
     @Override
-    public List<Product> selectUser(int id) {
+    public List<Product> selectProduct(int id) {
         List<Product> products = new ArrayList<>();
         // Step 1: Establishing a Connection
         try (Connection connection = DatabaseConection.getConnection();
@@ -58,14 +58,14 @@ public class IndexService implements IIndexService {
     }
 
     @Override
-    public List<Product> selectAllUsers() {
+    public List<Product> selectAllProducts() {
         // using try-with-resources to avoid closing resources (boiler plate code)
         List<Product> products = new ArrayList<>();
         // Step 1: Establishing a Connection
         try (Connection connection = DatabaseConection.getConnection();
 
              // Step 2:Create a statement using connection object
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);)
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_ProductS);)
         {
             System.out.println(preparedStatement);
             // Step 3: Execute the query or update query
@@ -89,17 +89,17 @@ public class IndexService implements IIndexService {
     }
 
     @Override
-    public boolean deleteUser(int id) throws SQLException {
+    public boolean deleteProduct(int id) throws SQLException {
         return false;
     }
 
     @Override
-    public boolean updateUser(Product product) throws SQLException {
+    public boolean updateProduct(Product product) throws SQLException {
         return false;
     }
 
     @Override
-    public Product getUserById(int id) {
+    public Product getProductById(int id) {
         return null;
     }
 

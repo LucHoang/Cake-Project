@@ -60,7 +60,7 @@ public class IndexServlet extends HttpServlet {
     }
 
     private void listProducts(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
-        List<Product> products = this.indexService.selectAllUsers();
+        List<Product> products = this.indexService.selectAllProducts();
         request.setAttribute("products", products);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
@@ -75,7 +75,7 @@ public class IndexServlet extends HttpServlet {
             throws IOException, ServletException {
         int categoryId = Integer.parseInt(request.getParameter("id"));
 
-        List<Product> products = this.indexService.selectUser(categoryId);
+        List<Product> products = this.indexService.selectProduct(categoryId);
 
         request.setAttribute("products", products);
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");

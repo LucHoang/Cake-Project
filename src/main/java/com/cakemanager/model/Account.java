@@ -7,22 +7,21 @@ public class Account {
     private String email;
     private String phone;
     private String address;
-    private String userName;
     private boolean roll;
 
     public Account() {
 
     }
 
-    public Account(int userId, String name, String password, String email, String phone, String address, String userName, boolean roll) {
+    public Account(int userId, String name, String password, String email, String phone, String address, boolean roll) {
         this.userId = userId;
         this.name = name;
         this.password = password;
         this.email = email;
         this.phone = phone;
         this.address = address;
-        this.userName = userName;
         this.roll = roll;
+
     }
 
     public int getUserId() {
@@ -71,14 +70,6 @@ public class Account {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 
     public boolean isRoll() {

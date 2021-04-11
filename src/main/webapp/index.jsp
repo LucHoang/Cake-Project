@@ -294,7 +294,7 @@
             <h6><a href="#">${product.getName()}</a></h6>
             <div class="product__item__price">${product.getUnitPrice()} $</div>
             <div class="cart_add">
-              <a href="#">Thêm vào giỏ hàng</a>
+              <a href="/CartServlet?action=insert&productName=${product.getName()}&productPrice=${product.getUnitPrice()}&priceTotal=${product.getUnitPrice()}&userId=1&thumbnail=${product.getThumbnail()}">Thêm vào giỏ hàng</a>
             </div>
           </div>
         </div>
