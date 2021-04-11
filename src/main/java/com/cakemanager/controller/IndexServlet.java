@@ -47,7 +47,6 @@ public class IndexServlet extends HttpServlet {
                 break;
             case "showProductCategory":
                 showProductCategory(request, response);
-
                 break;
             default:
                 listProducts(request, response);

@@ -54,7 +54,7 @@
     </style>
 </head>
 <body>
-<form action="" class="needs-validation" onsubmit="return removeSpace()" novalidate>
+<form action="/RegisterServlet" class="needs-validation" onsubmit="return removeSpace()" novalidate method="post">
     <div class="card bg-light">
         <article class="card-body mx-auto" style="max-width: 400px;">
             <h4 class="card-title mt-3 text-center">Đăng kí tài khoản</h4>
@@ -62,7 +62,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                 </div>
-                <input name="" class="form-control" placeholder="Họ và tên" type="text"
+                <input name="userName" class="form-control" placeholder="Họ và tên" type="text"
                        pattern="^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s|_ ]+$"
                        required="" id="userName"  maxlength="30">
                 <div class="invalid-feedback" id="invalid-name">
@@ -73,7 +73,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                 </div>
-                <input name="" class="form-control" placeholder="Địa chỉ Email" type="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required="">
+                <input name="email" class="form-control" placeholder="Địa chỉ Email" type="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required="">
                 <div class="invalid-feedback">
                     Email bạn nhập chưa đúng!
                 </div>
@@ -82,7 +82,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
                 </div>
-                <input name="" class="form-control" placeholder="Số điện thoại" type="tel" pattern="[0]{1}[1-9]{9}" required >
+                <input name="phone" class="form-control" placeholder="Số điện thoại" type="tel" pattern="[0]{1}[1-9]{9}" required >
                 <div class="invalid-feedback">
                     Số điện thoại bạn nhập chưa đúng!
                 </div>
@@ -91,7 +91,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-road"></i> </span>
                 </div>
-                <input name="" class="form-control" placeholder="Địa chỉ" type="address" required>
+                <input name="address" class="form-control" placeholder="Địa chỉ" type="address" required>
                 <div class="invalid-feedback">
                     Địa chỉ bạn nhập chưa đúng
                 </div>
@@ -100,7 +100,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                 </div>
-                <input class="form-control" placeholder="Mật khẩu" type="password" required>
+                <input name="password" class="form-control" placeholder="Mật khẩu" type="password" required>
                 <div class="invalid-feedback">
                     Hãy điền đầy đủ mật khẩu !
                 </div>
@@ -108,7 +108,7 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block">Tạo tài khoản </button>
             </div> <!-- form-group// -->
-            <p class="text-center">Bạn đã có tài khoản? <a href="">Đăng nhập</a> </p>
+            <p class="text-center">Bạn đã có tài khoản? <a href="login.jsp">Đăng nhập</a> </p>
         </article>
     </div>
 </form>
@@ -122,6 +122,8 @@
         console.log( document.getElementById("userName").value);
         return true;
     }
+
+
     (function () { // effect validation bootstrap
         'use strict'
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -133,6 +135,8 @@
                 if (!form.checkValidity()) {
                     event.preventDefault() // được sử dụng để ngăn chặn xử lý mặc định của trình duyệt khi xảy ra sự kiện.
                     event.stopPropagation() //được sử dụng để ngăn không cho sự kiện lan toả lên các phần tử cha của phần tử diễn ra sự kiện.
+                }else {
+                    alert("Đăng kí thành công!");
                 }
                 form.classList.add('was-validated')
             }, false)

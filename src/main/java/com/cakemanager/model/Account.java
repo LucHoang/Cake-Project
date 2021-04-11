@@ -5,16 +5,22 @@ public class Account {
     private String name;
     private String password;
     private String email;
+    private String phone;
+    private String address;
+    private boolean roll;
 
     public Account() {
 
     }
 
-    public Account(int userId, String name, String password, String email) {
+    public Account(int userId, String name, String phone, String email, String address, String password, boolean roll) {
         this.userId = userId;
         this.name = name;
         this.password = password;
         this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.roll = roll;
     }
 
     public int getUserId() {
@@ -47,5 +53,29 @@ public class Account {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public boolean isRoll() {
+        return roll;
+    }
+
+    public void setRoll(boolean roll) {
+        this.roll = roll;
     }
 }

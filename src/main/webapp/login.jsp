@@ -45,18 +45,18 @@
 <body>
 <div class="login-form">
     <form action="/LoginServlet" method="post">
-        <h2 class="text-center">Log in</h2>
+        <h2 class="text-center">Đăng nhập</h2>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Username" required="required" name="email">
+            <input type="text" class="form-control" placeholder="Email" required="required" name="email">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password" required="required" name="passWord">
+            <input type="password" class="form-control" placeholder="Mật khẩu" required="required" name="passWord">
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">Log in</button>
+            <button type="submit" class="btn btn-primary btn-block">đăng nhập</button>
         </div>
     </form>
-    <p class="text-center"><a href="#">Create an Account</a></p>
+    <p class="text-center"><a href="registerAcount.jsp">Đăng kí tài khoản</a></p>
 </div>
 </body>
 </html>

@@ -88,13 +88,16 @@
                     <li>USD</li>
                   </ul>
                 </li>
-                <li>ENG <span class="arrow_carrot-down"></span>
-                  <ul>
-                    <li>Vietnamese</li>
-                    <li>ENG</li>
-                  </ul>
-                </li>
-                <li><a href="./login.jsp">Đăng nhập</a> <span class="arrow_carrot-down"></span></li>
+                <c:if test="${sessionScope.account.roll}">
+                  <li><b><a href="login.jsp">Quản lý sản phẩm</a></b></li>
+                </c:if>
+                <c:if test="${sessionScope.account != null}">
+                  <li><b><a href="#">Xin chào ${sessionScope.account.name}</a></b></li>
+                  <li><a href="/LogoutServlet">Đăng xuất</a> <span class="arrow_carrot-down"></span></li>
+                </c:if>
+                <c:if test="${sessionScope.account == null}">
+                  <li><a href="login.jsp">Đăng nhập</a> <span class="arrow_carrot-down"></span></li>
+                </c:if>
               </ul>
             </div>
             <div class="header__logo">
