@@ -31,16 +31,12 @@ public class IndexService implements IIndexService {
     @Override
     public List<Product> selectProduct(int id) {
         List<Product> products = new ArrayList<>();
-        // Step 1: Establishing a Connection
         try (Connection connection = DatabaseConection.getConnection();
-             // Step 2:Create a statement using connection object
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PRODUCT_BY_ID);) {
             preparedStatement.setInt(1, id);
             System.out.println(preparedStatement);
-            // Step 3: Execute the query or update query
             ResultSet rs = preparedStatement.executeQuery();
 
-            // Step 4: Process the ResultSet object.
             while (rs.next()) {
                 int productId = rs.getInt("productId");
                 String name = rs.getString("name");

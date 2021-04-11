@@ -7,11 +7,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductService {
     private static final String SELECT_FROM_PRODUCTS_WHERE_PRODUCT_ID = "select * from products where productId =?";
     private static final String INSERT_CART_SQL = "INSERT INTO cart" + "  (productName, productPrice, quantity, priceTotal, userId, thumbnail) VALUES " +
             " (?, ?, ?, ?, ?, ?);";
+    private static final String SELECT_FROM_PRODUCTS_WHERE_CATEGORY_ID = "select * from products where categoryId =?";
 
     public ProductService() {
 
@@ -46,6 +49,30 @@ public class ProductService {
     }
 
     private void printSQLException(SQLException e) {
+    }
+
+    public List<Product> selectProductByCategoryId(int id) {
+        List<Product> products = new ArrayList<>();
+        try (Connection connection = DatabaseConection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_FROM_PRODUCTS_WHERE_CATEGORY_ID);) {
+            preparedStatement.setInt(1, id);
+            System.out.println(preparedStatement);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                int productId = rs.getInt("productId");
+                String name = rs.getString("name");
+                Float unitPrice = rs.getFloat("unitPrice");
+                int quantityStock = rs.getInt("quantityStock");
+                String productDescription = rs.getString("productDescription");
+                String thumbnail = rs.getString("thumbnail");
+                int categoryId = rs.getInt("categoryId");
+                products.add(new Product(productId, name, unitPrice, quantityStock, productDescription, thumbnail, categoryId));
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return products;
     }
 
     public void insertCart(Cart cart) throws SQLException {

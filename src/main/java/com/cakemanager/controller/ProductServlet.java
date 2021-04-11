@@ -10,6 +10,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet(name = "ProductServlet", value = "/ProductServlet")
 public class ProductServlet extends HttpServlet {
@@ -58,12 +59,18 @@ public class ProductServlet extends HttpServlet {
     private void viewProduct(HttpServletRequest request, HttpServletResponse response) {
         int productId = Integer.parseInt(request.getParameter("id"));
         Product product = this.productService.selectProductById(productId);
+
+
+        int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+        List<Product> products = this.productService.selectProductByCategoryId(categoryId);
+
         RequestDispatcher dispatcher;
 
         if(product == null){
             dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {
             request.setAttribute("product", product);
+            request.setAttribute("products", products);
             dispatcher = request.getRequestDispatcher("shop-details.jsp");
         }
         try {
