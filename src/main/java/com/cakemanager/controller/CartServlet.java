@@ -43,7 +43,7 @@ public class CartServlet extends HttpServlet {
 //                showEditForm(request, response);
                     break;
                 case "delete":
-//                showDeleteForm(request, response);
+                    deleteCart(request, response);
                     break;
                 case "view":
                     //viewProduct(request, response);
@@ -85,6 +85,18 @@ public class CartServlet extends HttpServlet {
         listCarts(request, response);
 //        RequestDispatcher dispatcher = request.getRequestDispatcher("shoping-cart.jsp");
 //        dispatcher.forward(request, response);
+    }
+
+    private void deleteCart(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        int cartId = Integer.parseInt(request.getParameter("id"));
+        cartService.deleteCart(cartId);
+
+//        List<Cart> listCart = cartService.selectCart(1);
+//        request.setAttribute("listCart", listCart);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
+//        dispatcher.forward(request, response);
+        listCarts(request, response);
     }
 
     @Override

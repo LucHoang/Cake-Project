@@ -17,7 +17,7 @@ public class CartService implements ICartService{
     private static final String SELECT_FROM_CART_WHERE_USER_ID = "select * from cart where userId =?";
     private static final String SELECT_ALL_ProductS = "select * from products";
     private static final String SELECT_CATEGORY_NAME = "select category.name from category join products on category.categoryId = products.categoryId where productId = ?";
-    private static final String DELETE_ProductS_SQL = "delete from products where id = ?;";
+    private static final String DELETE_FROM_CART_WHERE_CART_ID = "delete from cart where cartId = ?;";
     private static final String UPDATE_ProductS_SQL = "update products set name = ?,email= ?, country =? where id = ?;";
 
     public CartService() {
@@ -80,8 +80,14 @@ public class CartService implements ICartService{
     }
 
     @Override
-    public boolean deleteProduct(int id) throws SQLException {
-        return false;
+    public boolean deleteCart(int id) throws SQLException {
+        boolean rowDeleted;
+        try (Connection connection = DatabaseConection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(DELETE_FROM_CART_WHERE_CART_ID);) {
+            statement.setInt(1, id);
+            rowDeleted = statement.executeUpdate() > 0;
+        }
+        return rowDeleted;
     }
 
     @Override

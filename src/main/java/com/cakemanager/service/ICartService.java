@@ -13,7 +13,7 @@ public interface ICartService {
 
     List<Product> selectAllProducts();
 
-    boolean deleteProduct(int id) throws SQLException;
+    boolean deleteCart(int id) throws SQLException;
 
     boolean updateProduct(Product product) throws SQLException;
 

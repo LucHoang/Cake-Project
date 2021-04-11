@@ -200,7 +200,7 @@
                                         </div>
                                     </td>
                                     <td class="cart__price"><c:out value="${cart.getPriceTotal()}"/></td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
+                                    <td class="cart__close"><a href="/CartServlet?action=delete&id=${cart.getCartId()}"><span class="icon_close"></span></a></td>
                                 </tr>
                             </c:forEach>
 <%--                                <tr>--%>
