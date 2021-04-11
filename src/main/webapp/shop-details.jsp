@@ -171,7 +171,7 @@
                 <div class="col-lg-6">
                     <div class="product__details__img">
                         <div class="product__details__big__img">
-                            <img class="big_img" src="img/shop/details/product-big-1.jpg" alt="">
+                            <img class="big_img" src="${product.getThumbnail()}" alt="" width="440" height="440">
                         </div>
                         <div class="product__details__thumb">
                             <div class="pt__item active">
@@ -200,10 +200,9 @@
                 <div class="col-lg-6">
                     <div class="product__details__text">
                         <div class="product__label">Cupcake</div>
-                        <h4>SWEET AUTUMN LEAVES</h4>
-                        <h5>$26.41</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore
-                        et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida</p>
+                        <h4>${product.getName()}</h4>
+                        <h5>${product.getUnitPrice()}</h5>
+                        <p>${product.getProductDescription()}</p>
                         <ul>
                             <li>SKU: <span>17</span></li>
                             <li>Category: <span>Biscuit cake</span></li>
@@ -238,10 +237,7 @@
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             <div class="row d-flex justify-content-center">
                                 <div class="col-lg-8">
-                                    <p>This delectable Strawberry Pie is an extraordinary treat filled with sweet and
-                                        tasty chunks of delicious strawberries. Made with the freshest ingredients, one
-                                        bite will send you to summertime. Each gift arrives in an elegant gift box and
-                                    arrives with a greeting card of your choice that you can personalize online!</p>
+                                    <p>${product.getProductDescription()}</p>
                                 </div>
                             </div>
                         </div>

@@ -45,8 +45,9 @@
       <a href="#"><img src="img/icon/heart.png" alt=""></a>
     </div>
     <div class="offcanvas__cart__item">
-      <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-      <div class="cart__price">Giỏ hàng: <span>$0.00</span></div>
+      <a href="/CartServlet"><img src="img/icon/cart.png" alt=""> <span>C</span>
+      <div class="cart__price">Giỏ hàng</div>
+      </a>
     </div>
   </div>
   <div class="offcanvas__logo">
@@ -106,8 +107,9 @@
                 <a href="#"><img src="img/icon/heart.png" alt=""></a>
               </div>
               <div class="header__top__right__cart">
-                <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-                <div class="cart__price">Giỏ hàng: <span>$0.00</span></div>
+                <a href="/CartServlet"><img src="img/icon/cart.png" alt=""> <span>C</span>
+                  <div class="cart__price">Giỏ hàng</div>
+                </a>
               </div>
             </div>
           </div>
@@ -291,7 +293,7 @@
 <%--            </div>--%>
           </div>
           <div class="product__item__text">
-            <h6><a href="#">${product.getName()}</a></h6>
+            <h6><a href="/ProductServlet?action=view&id=${product.getProductId()}">${product.getName()}</a></h6>
             <div class="product__item__price">${product.getUnitPrice()} $</div>
             <div class="cart_add">
               <a href="/CartServlet?action=insert&productName=${product.getName()}&productPrice=${product.getUnitPrice()}&priceTotal=${product.getUnitPrice()}&userId=1&thumbnail=${product.getThumbnail()}">Thêm vào giỏ hàng</a>

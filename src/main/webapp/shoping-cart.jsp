@@ -186,7 +186,7 @@
                                 <tr>
                                     <td class="product__cart__item">
                                         <div class="product__cart__item__pic">
-                                            <img src="${cart.getThumbnail()}" alt="" width="90" height="90">
+                                            <img src="${product.getThumbnail()}" alt="" width="90" height="90">
                                         </div>
                                         <div class="product__cart__item__text">
                                             <h6><c:out value="${cart.getProductName()}"/></h6>
