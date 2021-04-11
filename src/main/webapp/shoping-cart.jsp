@@ -203,7 +203,7 @@
                                         <input  type="submit" value=" Update "/>
                                         </form>
                                     </td>
-                                    <td class="cart__price"><c:out value="${cart.getProductPrice()*cart.getQuantity()}"/></td>
+                                    <td class="cart__price">$ <c:out value="${cart.getProductPrice()*cart.getQuantity()}"/></td>
                                     <td class="cart__close"><a href="/CartServlet?action=delete&id=${cart.getCartId()}"><span class="icon_close"></span></a></td>
                                 </tr>
                             </c:forEach>
@@ -227,18 +227,22 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="cart__discount">
-                        <h6>Discount codes</h6>
-                        <form action="#">
-                            <input type="text" placeholder="Coupon code">
-                            <button type="submit">Apply</button>
-                        </form>
-                    </div>
+<%--                    <div class="cart__discount">--%>
+<%--                        <h6>Discount codes</h6>--%>
+<%--                        <form action="#">--%>
+<%--                            <input type="text" placeholder="Coupon code">--%>
+<%--                            <button type="submit">Apply</button>--%>
+<%--                        </form>--%>
+<%--                    </div>--%>
                     <div class="cart__total">
                         <h6>Cart total</h6>
                         <ul>
-                            <li>Subtotal <span>$ 169.50</span></li>
-                            <li>Total <span>$ 169.50</span></li>
+                            <li>Subtotal <span>$ 0</span></li>
+                            <c:set var = "total" value = "${0}"/>
+                            <c:forEach items='${requestScope["carts"]}' var="cart">
+                                <span hidden>${total = total + cart.getProductPrice()*cart.getQuantity()}</span>
+                            </c:forEach>
+                            <li>Total <span>$ <c:out value = "${total}"/></span></li>
                         </ul>
                         <a href="#" class="primary-btn">Proceed to checkout</a>
                     </div>
