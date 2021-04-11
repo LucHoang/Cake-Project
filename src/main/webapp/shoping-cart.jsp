@@ -186,7 +186,7 @@
                                 <tr>
                                     <td class="product__cart__item">
                                         <div class="product__cart__item__pic">
-                                            <img src="${product.getThumbnail()}" alt="" width="90" height="90">
+                                            <img src="${cart.getThumbnail()}" alt="" width="90" height="90">
                                         </div>
                                         <div class="product__cart__item__text">
                                             <h6><c:out value="${cart.getProductName()}"/></h6>
@@ -200,7 +200,7 @@
                                                     <input type="text" name="quantity" value="${cart.getQuantity()}">
                                             </div>
                                         </div>
-                                        <input  type="submit" value=" Update "/>
+                                        <input type="submit" value=" Update "/>
                                         </form>
                                     </td>
                                     <td class="cart__price">$ <c:out value="${cart.getProductPrice()*cart.getQuantity()}"/></td>

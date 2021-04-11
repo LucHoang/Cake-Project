@@ -175,16 +175,16 @@
                         </div>
                         <div class="product__details__thumb">
                             <div class="pt__item active">
-                                <img data-imgbigurl="img/shop/details/product-big-2.jpg"
-                                src="img/shop/details/product-big-2.jpg" alt="">
+                                <img data-imgbigurl="${product.getThumbnail()}"
+                                src="${product.getThumbnail()}" alt="">
                             </div>
                             <div class="pt__item">
-                                <img data-imgbigurl="img/shop/details/product-big-1.jpg"
-                                src="img/shop/details/product-big-1.jpg" alt="">
+                                <img data-imgbigurl="${product.getThumbnail()}"
+                                src="${product.getThumbnail()}" alt="">
                             </div>
                             <div class="pt__item">
-                                <img data-imgbigurl="img/shop/details/product-big-4.jpg"
-                                src="img/shop/details/product-big-4.jpg" alt="">
+                                <img data-imgbigurl="${product.getThumbnail()}"
+                                src="${product.getThumbnail()}" alt="">
                             </div>
                             <div class="pt__item">
                                 <img data-imgbigurl="img/shop/details/product-big-3.jpg"
@@ -201,21 +201,25 @@
                     <div class="product__details__text">
                         <div class="product__label">Cupcake</div>
                         <h4>${product.getName()}</h4>
-                        <h5>${product.getUnitPrice()}</h5>
+                        <h5>$${product.getUnitPrice()}</h5>
                         <p>${product.getProductDescription()}</p>
-                        <ul>
-                            <li>SKU: <span>17</span></li>
-                            <li>Category: <span>Biscuit cake</span></li>
-                            <li>Tags: <span>Gadgets, minimalisstic</span></li>
-                        </ul>
+<%--                        <ul>--%>
+<%--                            <li>SKU: <span>17</span></li>--%>
+<%--                            <li>Category: <span>Biscuit cake</span></li>--%>
+<%--                            <li>Tags: <span>Gadgets, minimalisstic</span></li>--%>
+<%--                        </ul>--%>
                         <div class="product__details__option">
+                            <form action="ProductServlet?action=insert&productName=${product.getName()}&productPrice=${product.getUnitPrice()}&priceTotal=${product.getUnitPrice()}&userId=1&thumbnail=${product.getThumbnail()}" method="post">
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input type="text" value="2">
+                                    <input type="text" name="quantity" value="1">
                                 </div>
                             </div>
-                            <a href="#" class="primary-btn">Add to cart</a>
-                            <a href="#" class="heart__btn"><span class="icon_heart_alt"></span></a>
+<%--                            <a href="#" class="primary-btn">Add to cart</a>--%>
+<%--                            <a href="#" class="heart__btn"><span class="icon_heart_alt"></span></a>--%>
+<%--                                <button class="primary-btn" type="submit">Add to cart</button>--%>
+                                <input class="primary-btn" style="border: none" type="submit" value="Add to cart"/>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -226,12 +230,12 @@
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Description</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Additional information</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Previews(1)</a>
-                        </li>
+<%--                        <li class="nav-item">--%>
+<%--                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Additional information</a>--%>
+<%--                        </li>--%>
+<%--                        <li class="nav-item">--%>
+<%--                            <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Previews(1)</a>--%>
+<%--                        </li>--%>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">

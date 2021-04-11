@@ -22,10 +22,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "CartServlet", value = "/CartServlet")
 public class CartServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private CartService cartService;
+    static CartService cartService = new CartService();
 
     public void init() {
-        cartService = new CartService();
+
     }
 
     @Override
@@ -63,10 +63,10 @@ public class CartServlet extends HttpServlet {
         }
     }
 
-    private void listCarts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    static void listCarts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //int userId = Integer.parseInt(request.getParameter("id"));
 
-        List<Cart> carts = this.cartService.selectCart(1);
+        List<Cart> carts = cartService.selectCart(1);
 
         request.setAttribute("carts", carts);
         RequestDispatcher dispatcher = request.getRequestDispatcher("shoping-cart.jsp");
@@ -86,8 +86,6 @@ public class CartServlet extends HttpServlet {
         cartService.insertCart(newCart);
 
         listCarts(request, response);
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("shoping-cart.jsp");
-//        dispatcher.forward(request, response);
     }
 
     private void deleteCart(HttpServletRequest request, HttpServletResponse response)
@@ -95,10 +93,6 @@ public class CartServlet extends HttpServlet {
         int cartId = Integer.parseInt(request.getParameter("id"));
         cartService.deleteCart(cartId);
 
-//        List<Cart> listCart = cartService.selectCart(1);
-//        request.setAttribute("listCart", listCart);
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
-//        dispatcher.forward(request, response);
         listCarts(request, response);
     }
 
@@ -111,8 +105,6 @@ public class CartServlet extends HttpServlet {
         cartService.updateCart(cart);
 
         listCarts(request, response);
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-//        dispatcher.forward(request, response);
     }
 
 

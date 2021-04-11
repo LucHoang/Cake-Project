@@ -36,6 +36,15 @@ public class Cart {
         this.quantity = quantity;
     }
 
+    public Cart(String productName, Float productPrice, int quantity, Float priceTotal, String thumbnail, int userId) {
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.priceTotal = priceTotal;
+        this.quantity = quantity;
+        this.thumbnail = thumbnail;
+        this.userId = userId;
+    }
+
     public int getUserId() {
         return userId;
     }

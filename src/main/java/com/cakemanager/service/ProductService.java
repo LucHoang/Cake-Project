@@ -1,5 +1,6 @@
 package com.cakemanager.service;
 
+import com.cakemanager.model.Cart;
 import com.cakemanager.model.Product;
 
 import java.sql.Connection;
@@ -9,6 +10,8 @@ import java.sql.SQLException;
 
 public class ProductService {
     private static final String SELECT_FROM_PRODUCTS_WHERE_PRODUCT_ID = "select * from products where productId =?";
+    private static final String INSERT_CART_SQL = "INSERT INTO cart" + "  (productName, productPrice, quantity, priceTotal, userId, thumbnail) VALUES " +
+            " (?, ?, ?, ?, ?, ?);";
 
     public ProductService() {
 
@@ -43,5 +46,22 @@ public class ProductService {
     }
 
     private void printSQLException(SQLException e) {
+    }
+
+    public void insertCart(Cart cart) throws SQLException {
+        System.out.println(INSERT_CART_SQL);
+        // try-with-resource statement will auto close the connection.
+        try (Connection connection = DatabaseConection.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CART_SQL)) {
+            preparedStatement.setString(1, cart.getProductName());
+            preparedStatement.setFloat(2, cart.getProductPrice());
+            preparedStatement.setInt(3, cart.getQuantity());
+            preparedStatement.setFloat(4, cart.getPriceTotal());
+            preparedStatement.setInt(5, cart.getUserId());
+            preparedStatement.setString(6, cart.getThumbnail());
+            System.out.println(preparedStatement);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
     }
 }

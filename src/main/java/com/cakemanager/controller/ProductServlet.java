@@ -1,5 +1,6 @@
 package com.cakemanager.controller;
 
+import com.cakemanager.model.Cart;
 import com.cakemanager.model.Product;
 import com.cakemanager.service.CartService;
 import com.cakemanager.service.ProductService;
@@ -38,9 +39,13 @@ public class ProductServlet extends HttpServlet {
             case "view":
                 viewProduct(request, response);
                 break;
-//                case "insert":
+//            case "insert":
+//                try {
 //                    insertCart(request, response);
-//                    break;
+//                } catch (SQLException throwables) {
+//                    throwables.printStackTrace();
+//                }
+//                break;
 //                case "update":
 //                    updateCart(request, response);
 //                    break;
@@ -68,8 +73,41 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
+    private void insertCart(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        String productName = request.getParameter("productName");
+        Float productPrice = Float.parseFloat(request.getParameter("productPrice"));
+        Float priceTotal = Float.parseFloat(request.getParameter("priceTotal"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        String thumbnail = request.getParameter("thumbnail");
+        int userId = Integer.parseInt(request.getParameter("userId"));
+
+        Cart newCart = new Cart(productName, productPrice, quantity, priceTotal, thumbnail, userId);
+
+        productService.insertCart(newCart);
+
+        CartServlet.listCarts(request, response);
+    }
+
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+
+        String action = request.getParameter("action");
+        if(action == null){
+            action = "";
+        }
+        switch (action) {
+            case "insert":
+                try {
+                    insertCart(request, response);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                break;
+        }
     }
 }
