@@ -26,9 +26,9 @@ com/cakemanager/service/IIndexService.java
  com.cakemanager.service.IIndexService
 com/cakemanager/model/Cart.java
  com.cakemanager.model.Cart
-com/cakemanager/controller/CartServlet.java
- com.cakemanager.controller.CartServlet
 com/cakemanager/service/ICartService.java
  com.cakemanager.service.ICartService
 com/cakemanager/service/CartService.java
  com.cakemanager.service.CartService
+com/cakemanager/controller/CartServlet.java
+ com.cakemanager.controller.CartServlet

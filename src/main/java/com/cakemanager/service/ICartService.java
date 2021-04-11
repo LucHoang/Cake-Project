@@ -15,7 +15,7 @@ public interface ICartService {
 
     boolean deleteCart(int id) throws SQLException;
 
-    boolean updateProduct(Product product) throws SQLException;
+    boolean updateCart(Cart cart) throws SQLException;
 
     Product getProductById(int id);
 }

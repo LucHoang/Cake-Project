@@ -51,6 +51,9 @@ public class CartServlet extends HttpServlet {
                 case "insert":
                     insertCart(request, response);
                     break;
+                case "update":
+                    updateCart(request, response);
+                    break;
                 default:
                     listCarts(request, response);
                     break;
@@ -99,8 +102,54 @@ public class CartServlet extends HttpServlet {
         listCarts(request, response);
     }
 
+    private void updateCart(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        int cartId = Integer.parseInt(request.getParameter("id"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+
+        Cart cart = new Cart(cartId, quantity);
+        cartService.updateCart(cart);
+
+        listCarts(request, response);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+//        dispatcher.forward(request, response);
+    }
+
+
+
+
+
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+
+        String action = request.getParameter("action");
+        if(action == null){
+            action = "";
+        }
+        try {
+            switch (action) {
+//                case "edit":
+////                showEditForm(request, response);
+//                    break;
+//                case "delete":
+//                    deleteCart(request, response);
+//                    break;
+//                case "view":
+//                    //viewProduct(request, response);
+//                    break;
+//                case "insert":
+//                    insertCart(request, response);
+//                    break;
+                case "update":
+                    updateCart(request, response);
+                    break;
+            }
+        } catch (SQLException ex) {
+            throw new ServletException(ex);
+        }
     }
 }
