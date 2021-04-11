@@ -1,5 +1,6 @@
 package com.cakemanager.service;
 
+import com.cakemanager.model.Category;
 import com.cakemanager.model.Product;
 
 import java.sql.SQLException;
@@ -17,4 +18,6 @@ public interface IIndexService {
      boolean updateProduct(Product product) throws SQLException;
 
      Product getProductById(int id);
+
+     public Category selectCategoryByProductId(int id);
 }

@@ -200,15 +200,15 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="product__details__text">
-                        <div class="product__label">Cupcake</div>
+                        <div class="product__label">${category.getName()}</div>
                         <h4>${product.getName()}</h4>
                         <h5>$${product.getUnitPrice()}</h5>
                         <p>${product.getProductDescription()}</p>
-<%--                        <ul>--%>
-<%--                            <li>SKU: <span>17</span></li>--%>
-<%--                            <li>Category: <span>Biscuit cake</span></li>--%>
+                        <ul>
+                            <li>SKU: <span>${product.getProductId()}</span></li>
+                            <li>Category: <span>${category.getName()}</span></li>
 <%--                            <li>Tags: <span>Gadgets, minimalisstic</span></li>--%>
-<%--                        </ul>--%>
+                        </ul>
                         <div class="product__details__option">
                             <form action="ProductServlet?action=insert&productName=${product.getName()}&productPrice=${product.getUnitPrice()}&priceTotal=${product.getUnitPrice()}&userId=1&thumbnail=${product.getThumbnail()}" method="post">
                             <div class="quantity">
@@ -293,9 +293,9 @@
                         <div class="product__item">
                             <a href="/ProductServlet?action=view&id=${product.getProductId()}&categoryId=${product.getCategoryId()}">
                             <div class="product__item__pic set-bg" data-setbg="${product.getThumbnail()}">
-<%--                                <div class="product__label">--%>
-<%--                                    <span>Cupcake</span>--%>
-<%--                                </div>--%>
+                                <div class="product__label">
+                                    <span>${category.getName()}</span>
+                                </div>
                             </div>
                             </a>
                             <div class="product__item__text">

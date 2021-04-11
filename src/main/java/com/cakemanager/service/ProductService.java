@@ -1,6 +1,7 @@
 package com.cakemanager.service;
 
 import com.cakemanager.model.Cart;
+import com.cakemanager.model.Category;
 import com.cakemanager.model.Product;
 
 import java.sql.Connection;
@@ -14,7 +15,8 @@ public class ProductService {
     private static final String SELECT_FROM_PRODUCTS_WHERE_PRODUCT_ID = "select * from products where productId =?";
     private static final String INSERT_CART_SQL = "INSERT INTO cart" + "  (productName, productPrice, quantity, priceTotal, userId, thumbnail) VALUES " +
             " (?, ?, ?, ?, ?, ?);";
-    private static final String SELECT_FROM_PRODUCTS_WHERE_CATEGORY_ID = "select * from products where categoryId =?";
+    private static final String SELECT__WHERE_CATEGORY_ID = "select * from products where categoryId =?";
+    private static final String SELECT_CATEGORY_NAME_WHERE_PRODUCT_ID = "select category.name from category, products where category.categoryId = products.categoryId and products.productId =?";
 
     public ProductService() {
 
@@ -54,7 +56,7 @@ public class ProductService {
     public List<Product> selectProductByCategoryId(int id) {
         List<Product> products = new ArrayList<>();
         try (Connection connection = DatabaseConection.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_FROM_PRODUCTS_WHERE_CATEGORY_ID);) {
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT__WHERE_CATEGORY_ID);) {
             preparedStatement.setInt(1, id);
             System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
@@ -90,5 +92,23 @@ public class ProductService {
         } catch (SQLException e) {
             printSQLException(e);
         }
+    }
+
+    public Category selectCategoryByProductId(int id) {
+        Category category = null;
+        try (Connection connection = DatabaseConection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CATEGORY_NAME_WHERE_PRODUCT_ID);) {
+            preparedStatement.setInt(1, id);
+            System.out.println(preparedStatement);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                String name = rs.getString("name");
+                category= new Category(name);
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return category;
     }
 }

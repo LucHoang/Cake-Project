@@ -1,5 +1,6 @@
 package com.cakemanager.service;
 
+import com.cakemanager.model.Category;
 import com.cakemanager.model.Product;
 
 import java.sql.*;
@@ -16,6 +17,8 @@ public class IndexService implements IIndexService {
     private static final String SELECT_CATEGORY_NAME = "select category.name from category join products on category.categoryId = products.categoryId where productId = ?";
     private static final String DELETE_ProductS_SQL = "delete from products where id = ?;";
     private static final String UPDATE_ProductS_SQL = "update products set name = ?,email= ?, country =? where id = ?;";
+    private static final String SELECT_CATEGORY_NAME_WHERE_PRODUCT_ID = "select category.name from category, products where category.categoryId = products.categoryId and products.productId =?";
+
 
     public IndexService() {
 
@@ -82,6 +85,24 @@ public class IndexService implements IIndexService {
             printSQLException(e);
         }
         return products;
+    }
+
+    public Category selectCategoryByProductId(int id) {
+        Category category = null;
+        try (Connection connection = DatabaseConection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CATEGORY_NAME_WHERE_PRODUCT_ID);) {
+            preparedStatement.setInt(1, id);
+            System.out.println(preparedStatement);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                String name = rs.getString("name");
+                category= new Category(name);
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return category;
     }
 
     @Override

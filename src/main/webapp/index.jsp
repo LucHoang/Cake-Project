@@ -289,9 +289,9 @@
         <div class="product__item">
           <a href="/ProductServlet?action=view&id=${product.getProductId()}&categoryId=${product.getCategoryId()}">
           <div class="product__item__pic set-bg" data-setbg="${product.getThumbnail()}">
-<%--            <div class="product__label">--%>
-<%--              <span>${product.getCategoryId()}</span>--%>
-<%--            </div>--%>
+            <div class="product__label">
+              <span>${category.getName()}</span>
+            </div>
           </div>
           </a>
           <div class="product__item__text">

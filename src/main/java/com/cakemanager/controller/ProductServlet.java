@@ -1,6 +1,7 @@
 package com.cakemanager.controller;
 
 import com.cakemanager.model.Cart;
+import com.cakemanager.model.Category;
 import com.cakemanager.model.Product;
 import com.cakemanager.service.CartService;
 import com.cakemanager.service.ProductService;
@@ -64,6 +65,8 @@ public class ProductServlet extends HttpServlet {
         int categoryId = Integer.parseInt(request.getParameter("categoryId"));
         List<Product> products = this.productService.selectProductByCategoryId(categoryId);
 
+        Category category = this.productService.selectCategoryByProductId(productId);
+
         RequestDispatcher dispatcher;
 
         if(product == null){
@@ -71,6 +74,7 @@ public class ProductServlet extends HttpServlet {
         } else {
             request.setAttribute("product", product);
             request.setAttribute("products", products);
+            request.setAttribute("category", category);
             dispatcher = request.getRequestDispatcher("shop-details.jsp");
         }
         try {
