@@ -121,9 +121,9 @@
                 <div class="col-lg-12">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="./index.html">Home</a></li>
+                            <li><a href="/index">Home</a></li>
                             <li><a href="about.jsp">About</a></li>
-                            <li class="active"><a href="shop.jsp">Shop</a></li>
+                            <li class="active"><a href="/shop">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="./shop-details.jsp">Shop Details</a></li>
@@ -200,15 +200,11 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="product__details__text">
-                        <div class="product__label">${category.getName()}</div>
-                        <h4>${product.getName()}</h4>
-                        <h5>$${product.getUnitPrice()}</h5>
-                        <p>${product.getProductDescription()}</p>
-                        <ul>
-                            <li>SKU: <span>${product.getProductId()}</span></li>
-                            <li>Category: <span>${category.getName()}</span></li>
-<%--                            <li>Tags: <span>Gadgets, minimalisstic</span></li>--%>
-                        </ul>
+                        <div class="product__label">${detail.name}</div>
+                        <h4>${detail.name}</h4>
+                        <h5>$${detail.unitPrice}</h5>
+                        <p>${detail.productDescription}</p>
+
                         <div class="product__details__option">
                             <form action="ProductServlet?action=insert&productName=${product.getName()}&productPrice=${product.getUnitPrice()}&priceTotal=${product.getUnitPrice()}&userId=1&thumbnail=${product.getThumbnail()}" method="post">
                             <div class="quantity">
