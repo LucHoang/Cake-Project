@@ -42,12 +42,22 @@
   <div class="offcanvas__cart">
     <div class="offcanvas__cart__links">
       <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-      <a href="#"><img src="img/icon/heart.png" alt=""></a>
+<%--      <a href="#"><img src="img/icon/heart.png" alt=""></a>--%>
     </div>
     <div class="offcanvas__cart__item">
-      <a href="/CartServlet"><img src="img/icon/cart.png" alt=""> <span>C</span>
-      <div class="cart__price">Giỏ hàng</div>
-      </a>
+      <c:if test="${sessionScope.account != null}">
+        <a href="/CartServlet?userId=${account.getUserId()}"><img src="img/icon/cart.png" alt=""> <span>C</span>
+          <div class="cart__price">Giỏ hàng</div>
+        </a>
+      </c:if>
+      <c:if test="${sessionScope.account == null}">
+        <a href="login.jsp"><img src="img/icon/cart.png" alt=""> <span>C</span>
+          <div class="cart__price">Giỏ hàng</div>
+        </a>
+      </c:if>
+<%--      <a href="/CartServlet?userId=${account.getUserId()}"><img src="img/icon/cart.png" alt=""> <span>C</span>--%>
+<%--      <div class="cart__price">Giỏ hàng</div>--%>
+<%--      </a>--%>
     </div>
   </div>
   <div class="offcanvas__logo">
@@ -107,12 +117,19 @@
             <div class="header__top__right">
               <div class="header__top__right__links">
                 <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                <a href="#"><img src="img/icon/heart.png" alt=""></a>
+<%--                <a href="#"><img src="img/icon/heart.png" alt=""></a>--%>
               </div>
               <div class="header__top__right__cart">
-                <a href="/CartServlet"><img src="img/icon/cart.png" alt=""> <span>C</span>
-                  <div class="cart__price">Giỏ hàng</div>
-                </a>
+                <c:if test="${sessionScope.account != null}">
+                  <a href="/CartServlet?userId=${account.getUserId()}"><img src="img/icon/cart.png" alt=""> <span>C</span>
+                    <div class="cart__price">Giỏ hàng</div>
+                  </a>
+                </c:if>
+                <c:if test="${sessionScope.account == null}">
+                  <a href="login.jsp"><img src="img/icon/cart.png" alt=""> <span>C</span>
+                    <div class="cart__price">Giỏ hàng</div>
+                  </a>
+                </c:if>
               </div>
             </div>
           </div>
@@ -301,7 +318,12 @@
             <h6><a href="/ProductServlet?action=view&id=${product.getProductId()}&categoryId=${product.getCategoryId()}">${product.getName()}</a></h6>
             <div class="product__item__price">${product.getUnitPrice()} $</div>
             <div class="cart_add">
-              <a href="/CartServlet?action=insert&productName=${product.getName()}&productPrice=${product.getUnitPrice()}&priceTotal=${product.getUnitPrice()}&userId=1&thumbnail=${product.getThumbnail()}">Thêm vào giỏ hàng</a>
+              <c:if test="${sessionScope.account != null}">
+              <a href="/CartServlet?action=insert&productName=${product.getName()}&productPrice=${product.getUnitPrice()}&priceTotal=${product.getUnitPrice()}&userId=${account.getUserId()}&thumbnail=${product.getThumbnail()}">Thêm vào giỏ hàng</a>
+              </c:if>
+              <c:if test="${sessionScope.account == null}">
+                <a href="login.jsp">Thêm vào giỏ hàng</a>
+              </c:if>
             </div>
           </div>
         </div>

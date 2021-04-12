@@ -64,9 +64,9 @@ public class CartServlet extends HttpServlet {
     }
 
     static void listCarts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //int userId = Integer.parseInt(request.getParameter("id"));
+        int userId = Integer.parseInt(request.getParameter("userId"));
 
-        List<Cart> carts = cartService.selectCart(1);
+        List<Cart> carts = cartService.selectCart(userId);
 
         request.setAttribute("carts", carts);
         RequestDispatcher dispatcher = request.getRequestDispatcher("shoping-cart.jsp");
