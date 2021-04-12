@@ -13,7 +13,6 @@ public class Account {
 
     }
 
-
     public Account(int userId, String name, String phone, String email, String address, String password, boolean roll) {
         this.userId = userId;
         this.name = name;
