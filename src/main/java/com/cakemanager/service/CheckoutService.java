@@ -1,6 +1,7 @@
 package com.cakemanager.service;
 
 import com.cakemanager.model.Cart;
+import com.cakemanager.model.OrderDetails;
 import com.cakemanager.model.Orders;
 
 import java.sql.Connection;
@@ -8,11 +9,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class CheckoutService {
     private static final String SELECT_FROM_CART_WHERE_USER_ID = "select * from cart where userId =?";
+    private static final String SELECT_FROM_ORDER_WHERE_USER_ID = "select * from orders where userId =?";
     private static final String INSERT_INTO_ORDERS_USER_ID_VALUES = "INSERT INTO orders (userId) VALUES (?);";
+    private static final String INSERT_INTO_ORDERS_DETAIL = "INSERT INTO orderdetails VALUES (?, ?, ?, ?, ?);";
 
     public CheckoutService() {
 
@@ -60,5 +64,43 @@ public class CheckoutService {
         } catch (SQLException e) {
             printSQLException(e);
         }
+    }
+
+    public void insertOrderDetail(OrderDetails orderDetails) {
+        System.out.println(INSERT_INTO_ORDERS_DETAIL);
+        try (Connection connection = DatabaseConection.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INTO_ORDERS_DETAIL)) {
+            preparedStatement.setInt(1, orderDetails.getProductId());
+            preparedStatement.setInt(2, orderDetails.getOrderId());
+            preparedStatement.setFloat(3, orderDetails.getSalePrice());
+            preparedStatement.setInt(4, orderDetails.getQuantityProduct());
+            preparedStatement.setString(5, orderDetails.getProductName());
+            System.out.println(preparedStatement);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+    }
+
+    public List<Orders> selectOrder(int userId) {
+        List<Orders> orders = new ArrayList<>();
+        try (Connection connection = DatabaseConection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_FROM_ORDER_WHERE_USER_ID);) {
+            preparedStatement.setInt(1, userId);
+            System.out.println(preparedStatement);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                int orderId = rs.getInt("orderId");
+//                Date orderDate = rs.getDate("orderDate");
+                int id = rs.getInt("userId");
+                //boolean status = rs.getBoolean("status");
+
+                orders.add(new Orders(orderId, userId));
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        System.out.println(orders);
+        return orders;
     }
 }

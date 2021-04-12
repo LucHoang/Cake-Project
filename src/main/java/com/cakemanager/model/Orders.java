@@ -23,6 +23,11 @@ public class Orders {
         this.userId = userId;
     }
 
+    public Orders(int orderId, int userId) {
+        this.orderId = orderId;
+        this.userId = userId;
+    }
+
     public int getOrderId() {
         return orderId;
     }

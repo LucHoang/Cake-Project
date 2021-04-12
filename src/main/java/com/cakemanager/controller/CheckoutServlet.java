@@ -17,6 +17,7 @@ import java.util.List;
 public class CheckoutServlet extends HttpServlet {
 
     private CheckoutService checkoutService;
+    private int orderId;
 
     public void init() {
         checkoutService = new CheckoutService();
@@ -67,37 +68,38 @@ public class CheckoutServlet extends HttpServlet {
         }
     }
 
-    private void insertOrder(HttpServletRequest request, HttpServletResponse response) {
+    private void insertOrder(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int userId = Integer.parseInt(request.getParameter("userId"));
 
-        Orders orders = new Orders(userId);
+        Orders order = new Orders(userId);
 
-        checkoutService.insertOrder(orders);
+        checkoutService.insertOrder(order);
 
-        insertOrderDetail(request, response);
+        List<Orders> orders = checkoutService.selectOrder(userId);
+        int orderId = orders.get(orders.size()-1).getOrderId();
+        System.out.println(orderId);
+        insertOrderDetail(request, response, orderId);
     }
 
-    private void insertOrderDetail(HttpServletRequest request, HttpServletResponse response) {
-//        int userId = Integer.parseInt(request.getParameter("userId"));
-//
-//        List<Cart> carts = checkoutService.selectCart(userId);
-//        for (int i=0; i<carts.size(); i++) {
-//            String productName = carts.get(i).getProductName();
-//            int id = carts.get(i).getUserId();
-//            float salePrice = carts.get(i).getProductPrice();
-//            int quantityProduct = carts.get(i).getQuantity();
-//            for (int j=) {
-//                if (cart1.getProductId() = cart.getProductId()) {
-//                    quantityProduct = quantityProduct + cart1.getQuantity();
-//                }
-//            }
+    private void insertOrderDetail(HttpServletRequest request, HttpServletResponse response, int orderId) throws IOException {
+//        this.orderId = orderId;
+        System.out.println(orderId);
+        int userId = Integer.parseInt(request.getParameter("userId"));
 
-//            OrderDetails orderDetails = new OrderDetails(productName, id, salePrice, quantityProduct);
-//            checkoutService.insertOrderDetail(orderDetails);
-//        }
-//
+        List<Cart> carts = checkoutService.selectCart(userId);
+        for (int i=0; i<carts.size(); i++) {
+            String productName = carts.get(i).getProductName();
+            int productId = carts.get(i).getProductId();
+            //orderId = this.orderId;
+            float salePrice = carts.get(i).getProductPrice();
+            int quantityProduct = carts.get(i).getQuantity();
+
+            OrderDetails orderDetails = new OrderDetails(productId, productName, orderId, salePrice, quantityProduct);
+            checkoutService.insertOrderDetail(orderDetails);
+        }
 //        request.setAttribute("carts", carts);
 //        RequestDispatcher dispatcher = request.getRequestDispatcher("checkout.jsp");
 //        dispatcher.forward(request, response);
+        response.sendRedirect("index");
     }
 }
