@@ -217,8 +217,9 @@
                                     <td class="cart__close">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </td>
+                                    <%! boolean checkDelete = true; %>
                                     <td class="cart__close">
-                                        <a href="/ManagerProductServlet?action=delete&productId=${product.productId}"><span class="glyphicon glyphicon-trash"></span></a>
+                                        <a onclick="return confirm('Bạn chắc muốn xoá sản phẩm này chứ?')" href="/ManagerProductServlet?action=delete&productId=${product.productId}" ><span class="glyphicon glyphicon-trash"></span></a>
                                     </td>
                                     </td>
                                 </tr>
@@ -321,7 +322,11 @@
     </div>
 </div>
 <!-- Search End -->
-
+<script>
+    function confirm_delete() {
+        return confirm('Bạn chắc muốn xoá sản phẩm này?');
+    }
+</script>
 <!-- Js Plugins -->
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
