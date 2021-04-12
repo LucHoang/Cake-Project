@@ -5,6 +5,7 @@ public class OrderDetails {
     private int orderId;
     private float salePrice;
     private int quantityProduct;
+    private String productName;
 
     public OrderDetails() {
 

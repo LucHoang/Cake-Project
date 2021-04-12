@@ -211,7 +211,7 @@
                         </ul>
                         <div class="product__details__option">
                             <c:if test="${sessionScope.account != null}">
-                            <form action="ProductServlet?action=insert&productName=${product.getName()}&productPrice=${product.getUnitPrice()}&priceTotal=${product.getUnitPrice()}&userId=${account.getUserId()}&thumbnail=${product.getThumbnail()}" method="post">
+                            <form action="ProductServlet?action=insert&productName=${product.getName()}&productPrice=${product.getUnitPrice()}&priceTotal=${product.getUnitPrice()}&userId=${account.getUserId()}&thumbnail=${product.getThumbnail()}&productId=${product.getProductId()}" method="post">
                             <div class="quantity">
                                 <div class="pro-qty">
                                     <input type="text" name="quantity" value="1">
@@ -318,7 +318,7 @@
                                 <div class="product__item__price">$${product.getUnitPrice()}</div>
                                 <div class="cart_add">
                                     <c:if test="${sessionScope.account != null}">
-                                    <a href="/CartServlet?action=insert&productName=${product.getName()}&productPrice=${product.getUnitPrice()}&priceTotal=${product.getUnitPrice()}&userId=${account.getUserId()}&thumbnail=${product.getThumbnail()}">Add to cart</a>
+                                    <a href="/CartServlet?action=insert&productName=${product.getName()}&productPrice=${product.getUnitPrice()}&priceTotal=${product.getUnitPrice()}&userId=${account.getUserId()}&thumbnail=${product.getThumbnail()}&productId=${product.getProductId()}">Add to cart</a>
                                     </c:if>
                                     <c:if test="${sessionScope.account == null}">
                                         <a href="login.jsp">Add to cart</a>

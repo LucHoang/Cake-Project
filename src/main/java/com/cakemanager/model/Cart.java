@@ -8,12 +8,13 @@ public class Cart {
     private float priceTotal;
     private String thumbnail;
     private int userId;
+    private int productId;
 
     public Cart() {
 
     }
 
-    public Cart(int cartId, String productName, float productPrice, int quantity, float priceTotal, String thumbnail, int userId) {
+    public Cart(int cartId, String productName, float productPrice, int quantity, float priceTotal, String thumbnail, int userId, int productId) {
         this.cartId = cartId;
         this.productName = productName;
         this.productPrice = productPrice;
@@ -21,6 +22,7 @@ public class Cart {
         this.priceTotal = priceTotal;
         this.thumbnail = thumbnail;
         this.userId = userId;
+        this.productId = productId;
     }
 
     public Cart(String productName, float productPrice, float priceTotal, String thumbnail, int userId) {
@@ -43,6 +45,33 @@ public class Cart {
         this.quantity = quantity;
         this.thumbnail = thumbnail;
         this.userId = userId;
+    }
+
+    public Cart(String productName, float productPrice, float priceTotal, String thumbnail, int userId, int productId) {
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.priceTotal = priceTotal;
+        this.thumbnail = thumbnail;
+        this.userId = userId;
+        this.productId = productId;
+    }
+
+    public Cart(String productName, Float productPrice, int quantity, Float priceTotal, String thumbnail, int userId, int productId) {
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.quantity = quantity;
+        this.priceTotal = priceTotal;
+        this.thumbnail = thumbnail;
+        this.userId = userId;
+        this.productId = productId;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public int getUserId() {

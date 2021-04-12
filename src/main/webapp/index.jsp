@@ -319,7 +319,7 @@
             <div class="product__item__price">${product.getUnitPrice()} $</div>
             <div class="cart_add">
               <c:if test="${sessionScope.account != null}">
-              <a href="/CartServlet?action=insert&productName=${product.getName()}&productPrice=${product.getUnitPrice()}&priceTotal=${product.getUnitPrice()}&userId=${account.getUserId()}&thumbnail=${product.getThumbnail()}">Thêm vào giỏ hàng</a>
+              <a href="/CartServlet?action=insert&productName=${product.getName()}&productPrice=${product.getUnitPrice()}&priceTotal=${product.getUnitPrice()}&userId=${account.getUserId()}&thumbnail=${product.getThumbnail()}&productId=${product.getProductId()}">Thêm vào giỏ hàng</a>
               </c:if>
               <c:if test="${sessionScope.account == null}">
                 <a href="login.jsp">Thêm vào giỏ hàng</a>

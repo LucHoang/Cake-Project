@@ -1,6 +1,8 @@
 package com.cakemanager.controller;
 
 import com.cakemanager.model.Cart;
+import com.cakemanager.model.OrderDetails;
+import com.cakemanager.model.Orders;
 import com.cakemanager.service.CheckoutService;
 import com.cakemanager.service.ProductService;
 
@@ -59,9 +61,43 @@ public class CheckoutServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-//                case "update":
-//                    updateCart(request, response);
-//                    break;
+                case "insertOrder":
+                    insertOrder(request, response);
+                    break;
         }
+    }
+
+    private void insertOrder(HttpServletRequest request, HttpServletResponse response) {
+        int userId = Integer.parseInt(request.getParameter("userId"));
+
+        Orders orders = new Orders(userId);
+
+        checkoutService.insertOrder(orders);
+
+        insertOrderDetail(request, response);
+    }
+
+    private void insertOrderDetail(HttpServletRequest request, HttpServletResponse response) {
+//        int userId = Integer.parseInt(request.getParameter("userId"));
+//
+//        List<Cart> carts = checkoutService.selectCart(userId);
+//        for (int i=0; i<carts.size(); i++) {
+//            String productName = carts.get(i).getProductName();
+//            int id = carts.get(i).getUserId();
+//            float salePrice = carts.get(i).getProductPrice();
+//            int quantityProduct = carts.get(i).getQuantity();
+//            for (int j=) {
+//                if (cart1.getProductId() = cart.getProductId()) {
+//                    quantityProduct = quantityProduct + cart1.getQuantity();
+//                }
+//            }
+
+//            OrderDetails orderDetails = new OrderDetails(productName, id, salePrice, quantityProduct);
+//            checkoutService.insertOrderDetail(orderDetails);
+//        }
+//
+//        request.setAttribute("carts", carts);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("checkout.jsp");
+//        dispatcher.forward(request, response);
     }
 }
