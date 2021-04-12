@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -180,86 +181,33 @@
                                 </tr>
                             </thead>
                             <tbody>
+
+                            <c:forEach items='${requestScope["carts"]}' var="cart">
                                 <tr>
                                     <td class="product__cart__item">
                                         <div class="product__cart__item__pic">
-                                            <img src="img/shop/cart/cart-1.jpg" alt="">
+                                            <img src="${cart.getThumbnail()}" alt="" width="90" height="90">
                                         </div>
                                         <div class="product__cart__item__text">
-                                            <h6>T-shirt Contrast Pocket</h6>
-                                            <h5>$98.49</h5>
+                                            <h6><c:out value="${cart.getProductName()}"/></h6>
+                                            <h5><c:out value="${cart.getProductPrice()}"/></h5>
                                         </div>
                                     </td>
                                     <td class="quantity__item">
+                                        <form action="CartServlet?action=update&id=${cart.getCartId()}" method="post">
                                         <div class="quantity">
                                             <div class="pro-qty">
-                                                <input type="text" value="1">
+                                                    <input type="text" name="quantity" value="${cart.getQuantity()}">
                                             </div>
                                         </div>
+                                        <input type="submit" value=" Update "/>
+                                        </form>
                                     </td>
-                                    <td class="cart__price">$ 30.00</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
+                                    <td class="cart__price">$ <c:out value="${cart.getProductPrice()*cart.getQuantity()}"/></td>
+                                    <td class="cart__close"><a href="/CartServlet?action=delete&id=${cart.getCartId()}"><span class="icon_close"></span></a></td>
                                 </tr>
-                                <tr>
-                                    <td class="product__cart__item">
-                                        <div class="product__cart__item__pic">
-                                            <img src="img/shop/cart/cart-2.jpg" alt="">
-                                        </div>
-                                        <div class="product__cart__item__text">
-                                            <h6>Diagonal Textured Cap</h6>
-                                            <h5>$98.49</h5>
-                                        </div>
-                                    </td>
-                                    <td class="quantity__item">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 32.50</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="product__cart__item">
-                                        <div class="product__cart__item__pic">
-                                            <img src="img/shop/cart/cart-3.jpg" alt="">
-                                        </div>
-                                        <div class="product__cart__item__text">
-                                            <h6>Basic Flowing Scarf</h6>
-                                            <h5>$98.49</h5>
-                                        </div>
-                                    </td>
-                                    <td class="quantity__item">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 47.00</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="product__cart__item">
-                                        <div class="product__cart__item__pic">
-                                            <img src="img/shop/cart/cart-4.jpg" alt="">
-                                        </div>
-                                        <div class="product__cart__item__text">
-                                            <h6>Basic Flowing Scarf</h6>
-                                            <h5>$98.49</h5>
-                                        </div>
-                                    </td>
-                                    <td class="quantity__item">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 30.00</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
+                            </c:forEach>
+
                             </tbody>
                         </table>
                     </div>
@@ -269,26 +217,32 @@
                                 <a href="#">Continue Shopping</a>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="continue__btn update__btn">
-                                <a href="#"><i class="fa fa-spinner"></i> Update cart</a>
-                            </div>
-                        </div>
+<%--                        <div class="col-lg-6 col-md-6 col-sm-6">--%>
+<%--                            <div class="continue__btn update__btn">--%>
+<%--                                <a href="#"><i class="fa fa-spinner"></i> Update cart</a>--%>
+<%--&lt;%&ndash;                                    <input type="submit" value="Update cart"/>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <button type="submit">Update cart</button>&ndash;%&gt;--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="cart__discount">
-                        <h6>Discount codes</h6>
-                        <form action="#">
-                            <input type="text" placeholder="Coupon code">
-                            <button type="submit">Apply</button>
-                        </form>
-                    </div>
+<%--                    <div class="cart__discount">--%>
+<%--                        <h6>Discount codes</h6>--%>
+<%--                        <form action="#">--%>
+<%--                            <input type="text" placeholder="Coupon code">--%>
+<%--                            <button type="submit">Apply</button>--%>
+<%--                        </form>--%>
+<%--                    </div>--%>
                     <div class="cart__total">
                         <h6>Cart total</h6>
                         <ul>
-                            <li>Subtotal <span>$ 169.50</span></li>
-                            <li>Total <span>$ 169.50</span></li>
+                            <li>Subtotal <span>$ 0</span></li>
+                            <c:set var = "total" value = "${0}"/>
+                            <c:forEach items='${requestScope["carts"]}' var="cart">
+                                <span hidden>${total = total + cart.getProductPrice()*cart.getQuantity()}</span>
+                            </c:forEach>
+                            <li>Total <span>$ <c:out value = "${total}"/></span></li>
                         </ul>
                         <a href="#" class="primary-btn">Proceed to checkout</a>
                     </div>

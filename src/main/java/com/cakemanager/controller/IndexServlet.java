@@ -1,5 +1,6 @@
 package com.cakemanager.controller;
 
+import com.cakemanager.model.Category;
 import com.cakemanager.service.IndexService;
 import com.cakemanager.model.Product;
 
@@ -9,6 +10,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "IndexServlet", value = "/index")
@@ -60,8 +62,14 @@ public class IndexServlet extends HttpServlet {
     }
 
     private void listProducts(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
-        List<Product> products = this.indexService.selectAllUsers();
+        List<Product> products = this.indexService.selectAllProducts();
+        Category category = null;
+        for (int i=0; i<8; i++) {
+            category = this.indexService.selectCategoryByProductId(products.get(i).getProductId());
+        }
+
         request.setAttribute("products", products);
+        request.setAttribute("category", category);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         try {
@@ -75,8 +83,14 @@ public class IndexServlet extends HttpServlet {
             throws IOException, ServletException {
         int categoryId = Integer.parseInt(request.getParameter("id"));
 
-        List<Product> products = this.indexService.selectUser(categoryId);
+        List<Product> products = this.indexService.selectProduct(categoryId);
 
+        Category category = null;
+        for (int i=0; i<8; i++) {
+            category = this.indexService.selectCategoryByProductId(products.get(i).getProductId());
+        }
+
+        request.setAttribute("category", category);
         request.setAttribute("products", products);
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);

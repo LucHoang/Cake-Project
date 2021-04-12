@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -171,20 +172,20 @@
                 <div class="col-lg-6">
                     <div class="product__details__img">
                         <div class="product__details__big__img">
-                            <img class="big_img" src="img/shop/details/product-big-1.jpg" alt="">
+                            <img class="big_img" src="${product.getThumbnail()}" alt="" width="440" height="440">
                         </div>
                         <div class="product__details__thumb">
                             <div class="pt__item active">
-                                <img data-imgbigurl="img/shop/details/product-big-2.jpg"
-                                src="img/shop/details/product-big-2.jpg" alt="">
+                                <img data-imgbigurl="${product.getThumbnail()}"
+                                src="${product.getThumbnail()}" alt="">
                             </div>
                             <div class="pt__item">
-                                <img data-imgbigurl="img/shop/details/product-big-1.jpg"
-                                src="img/shop/details/product-big-1.jpg" alt="">
+                                <img data-imgbigurl="${product.getThumbnail()}"
+                                src="${product.getThumbnail()}" alt="">
                             </div>
                             <div class="pt__item">
-                                <img data-imgbigurl="img/shop/details/product-big-4.jpg"
-                                src="img/shop/details/product-big-4.jpg" alt="">
+                                <img data-imgbigurl="${product.getThumbnail()}"
+                                src="${product.getThumbnail()}" alt="">
                             </div>
                             <div class="pt__item">
                                 <img data-imgbigurl="img/shop/details/product-big-3.jpg"
@@ -199,24 +200,27 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="product__details__text">
-                        <div class="product__label">Cupcake</div>
-                        <h4>SWEET AUTUMN LEAVES</h4>
-                        <h5>$26.41</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore
-                        et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida</p>
+                        <div class="product__label">${category.getName()}</div>
+                        <h4>${product.getName()}</h4>
+                        <h5>$${product.getUnitPrice()}</h5>
+                        <p>${product.getProductDescription()}</p>
                         <ul>
-                            <li>SKU: <span>17</span></li>
-                            <li>Category: <span>Biscuit cake</span></li>
-                            <li>Tags: <span>Gadgets, minimalisstic</span></li>
+                            <li>SKU: <span>${product.getProductId()}</span></li>
+                            <li>Category: <span>${category.getName()}</span></li>
+<%--                            <li>Tags: <span>Gadgets, minimalisstic</span></li>--%>
                         </ul>
                         <div class="product__details__option">
+                            <form action="ProductServlet?action=insert&productName=${product.getName()}&productPrice=${product.getUnitPrice()}&priceTotal=${product.getUnitPrice()}&userId=1&thumbnail=${product.getThumbnail()}" method="post">
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input type="text" value="2">
+                                    <input type="text" name="quantity" value="1">
                                 </div>
                             </div>
-                            <a href="#" class="primary-btn">Add to cart</a>
-                            <a href="#" class="heart__btn"><span class="icon_heart_alt"></span></a>
+<%--                            <a href="#" class="primary-btn">Add to cart</a>--%>
+<%--                            <a href="#" class="heart__btn"><span class="icon_heart_alt"></span></a>--%>
+<%--                                <button class="primary-btn" type="submit">Add to cart</button>--%>
+                                <input class="primary-btn" style="border: none" type="submit" value="Add to cart"/>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -227,21 +231,18 @@
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Description</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Additional information</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Previews(1)</a>
-                        </li>
+<%--                        <li class="nav-item">--%>
+<%--                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Additional information</a>--%>
+<%--                        </li>--%>
+<%--                        <li class="nav-item">--%>
+<%--                            <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Previews(1)</a>--%>
+<%--                        </li>--%>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             <div class="row d-flex justify-content-center">
                                 <div class="col-lg-8">
-                                    <p>This delectable Strawberry Pie is an extraordinary treat filled with sweet and
-                                        tasty chunks of delicious strawberries. Made with the freshest ingredients, one
-                                        bite will send you to summertime. Each gift arrives in an elegant gift box and
-                                    arrives with a greeting card of your choice that you can personalize online!</p>
+                                    <p>${product.getProductDescription()}</p>
                                 </div>
                             </div>
                         </div>
@@ -286,102 +287,108 @@
             </div>
             <div class="row">
                 <div class="related__products__slider owl-carousel">
+
+                    <c:forEach items='${requestScope["products"]}' var="product" begin="1" end="6">
                     <div class="col-lg-3">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-1.jpg">
+                            <a href="/ProductServlet?action=view&id=${product.getProductId()}&categoryId=${product.getCategoryId()}">
+                            <div class="product__item__pic set-bg" data-setbg="${product.getThumbnail()}">
                                 <div class="product__label">
-                                    <span>Cupcake</span>
+                                    <span>${category.getName()}</span>
                                 </div>
                             </div>
+                            </a>
                             <div class="product__item__text">
-                                <h6><a href="#">Dozen Cupcakes</a></h6>
-                                <div class="product__item__price">$32.00</div>
+                                <h6><a href="/ProductServlet?action=view&id=${product.getProductId()}&categoryId=${product.getCategoryId()}">${product.getName()}</a></h6>
+                                <div class="product__item__price">$${product.getUnitPrice()}</div>
                                 <div class="cart_add">
-                                    <a href="#">Add to cart</a>
+                                    <a href="/CartServlet?action=insert&productName=${product.getName()}&productPrice=${product.getUnitPrice()}&priceTotal=${product.getUnitPrice()}&userId=1&thumbnail=${product.getThumbnail()}">Add to cart</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-2.jpg">
-                                <div class="product__label">
-                                    <span>Cupcake</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Cookies and Cream</a></h6>
-                                <div class="product__item__price">$30.00</div>
-                                <div class="cart_add">
-                                    <a href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-3.jpg">
-                                <div class="product__label">
-                                    <span>Cupcake</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Gluten Free Mini Dozen</a></h6>
-                                <div class="product__item__price">$31.00</div>
-                                <div class="cart_add">
-                                    <a href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-4.jpg">
-                                <div class="product__label">
-                                    <span>Cupcake</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Cookie Dough</a></h6>
-                                <div class="product__item__price">$25.00</div>
-                                <div class="cart_add">
-                                    <a href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-5.jpg">
-                                <div class="product__label">
-                                    <span>Cupcake</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">Vanilla Salted Caramel</a></h6>
-                                <div class="product__item__price">$05.00</div>
-                                <div class="cart_add">
-                                    <a href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-6.jpg">
-                                <div class="product__label">
-                                    <span>Cupcake</span>
-                                </div>
-                            </div>
-                            <div class="product__item__text">
-                                <h6><a href="#">German Chocolate</a></h6>
-                                <div class="product__item__price">$14.00</div>
-                                <div class="cart_add">
-                                    <a href="#">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
+
+<%--                    <div class="col-lg-3">--%>
+<%--                        <div class="product__item">--%>
+<%--                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-2.jpg">--%>
+<%--                                <div class="product__label">--%>
+<%--                                    <span>Cupcake</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="product__item__text">--%>
+<%--                                <h6><a href="#">Cookies and Cream</a></h6>--%>
+<%--                                <div class="product__item__price">$30.00</div>--%>
+<%--                                <div class="cart_add">--%>
+<%--                                    <a href="#">Add to cart</a>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="col-lg-3">--%>
+<%--                        <div class="product__item">--%>
+<%--                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-3.jpg">--%>
+<%--                                <div class="product__label">--%>
+<%--                                    <span>Cupcake</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="product__item__text">--%>
+<%--                                <h6><a href="#">Gluten Free Mini Dozen</a></h6>--%>
+<%--                                <div class="product__item__price">$31.00</div>--%>
+<%--                                <div class="cart_add">--%>
+<%--                                    <a href="#">Add to cart</a>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="col-lg-3">--%>
+<%--                        <div class="product__item">--%>
+<%--                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-4.jpg">--%>
+<%--                                <div class="product__label">--%>
+<%--                                    <span>Cupcake</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="product__item__text">--%>
+<%--                                <h6><a href="#">Cookie Dough</a></h6>--%>
+<%--                                <div class="product__item__price">$25.00</div>--%>
+<%--                                <div class="cart_add">--%>
+<%--                                    <a href="#">Add to cart</a>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="col-lg-3">--%>
+<%--                        <div class="product__item">--%>
+<%--                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-5.jpg">--%>
+<%--                                <div class="product__label">--%>
+<%--                                    <span>Cupcake</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="product__item__text">--%>
+<%--                                <h6><a href="#">Vanilla Salted Caramel</a></h6>--%>
+<%--                                <div class="product__item__price">$05.00</div>--%>
+<%--                                <div class="cart_add">--%>
+<%--                                    <a href="#">Add to cart</a>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="col-lg-3">--%>
+<%--                        <div class="product__item">--%>
+<%--                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-6.jpg">--%>
+<%--                                <div class="product__label">--%>
+<%--                                    <span>Cupcake</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="product__item__text">--%>
+<%--                                <h6><a href="#">German Chocolate</a></h6>--%>
+<%--                                <div class="product__item__price">$14.00</div>--%>
+<%--                                <div class="cart_add">--%>
+<%--                                    <a href="#">Add to cart</a>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
                 </div>
             </div>
         </div>

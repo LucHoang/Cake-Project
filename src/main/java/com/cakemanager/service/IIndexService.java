@@ -1,22 +1,23 @@
 package com.cakemanager.service;
 
+import com.cakemanager.model.Category;
 import com.cakemanager.model.Product;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public interface IIndexService {
-     void insertUser(Product product) throws SQLException;
+     void insertProduct(Product product) throws SQLException;
 
-     List<Product> selectUser(int id);
+     List<Product> selectProduct(int id);
 
-     List<Product> selectAllUsers();
+     List<Product> selectAllProducts();
 
-     boolean deleteUser(int id) throws SQLException;
+     boolean deleteProduct(int id) throws SQLException;
 
-     boolean updateUser(Product product) throws SQLException;
+     boolean updateProduct(Product product) throws SQLException;
 
-     Product getUserById(int id);
+     Product getProductById(int id);
 
-
+     public Category selectCategoryByProductId(int id);
 }
