@@ -81,7 +81,7 @@ public class ManagerProductServlet extends HttpServlet {
             dispatcher = request.getRequestDispatcher("/ManagerProductServlet?message=error");
         }
     }
-    //Đang lỗi
+    //Test trên local
     private void insertProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         float unitPrice = Float.parseFloat(request.getParameter("price"));
