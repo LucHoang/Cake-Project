@@ -24,6 +24,8 @@ public class ProductService {
     private static final String SELECT_ALL_PRODUCTS = "select * from products;";
     private static final String SEARCH_BY_NAME = "select * from products where name like ?;";
     private static final String GET_PRODUCT_BY_PRODUCT_ID = "select * from products where productId = ?;";
+    private static final String SORT_PRODUCTS_BY_PRICE_FROM_H2L = "select * from products order by unitPrice desc;";
+    private static final String SORT_PRODUCTS_BY_PRICE_FROM_L2H = "select * from products order by unitPrice asc;";
 
 
     public ProductService() {
@@ -183,14 +185,6 @@ public class ProductService {
         return list;
     }
 
-    public static void main(String[] args) {
-        ProductService productService = new ProductService();
-        List<Category> list = productService.selectAllCategory();
-        for (Category o: list) {
-            System.out.println(o);
-        }
-    }
-
     public List<Product> searchByName(String textSearch) {
         List<Product> list = new ArrayList<>();
 
@@ -236,4 +230,57 @@ public class ProductService {
         }
         return null;
     }
+
+    public List<Product> sortProductsByPriceFromHtoL() {
+        List<Product> list = new ArrayList<>();
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(SORT_PRODUCTS_BY_PRICE_FROM_H2L)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int productId = rs.getInt("productId");
+                String name = rs.getString("name");
+                Float unitPrice = rs.getFloat("unitPrice");
+                int quantityStock = rs.getInt("quantityStock");
+                String productDescription = rs.getString("productDescription");
+                String thumbnail = rs.getString("thumbnail");
+                int cId = rs.getInt("categoryId");
+
+                list.add(new Product(productId, name, unitPrice, quantityStock, productDescription, thumbnail, cId));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<Product> sortProductsByPriceFromLtoH() {
+        List<Product> list = new ArrayList<>();
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(SORT_PRODUCTS_BY_PRICE_FROM_L2H)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int productId = rs.getInt("productId");
+                String name = rs.getString("name");
+                Float unitPrice = rs.getFloat("unitPrice");
+                int quantityStock = rs.getInt("quantityStock");
+                String productDescription = rs.getString("productDescription");
+                String thumbnail = rs.getString("thumbnail");
+                int cId = rs.getInt("categoryId");
+
+                list.add(new Product(productId, name, unitPrice, quantityStock, productDescription, thumbnail, cId));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public static void main(String[] args) {
+        ProductService productService = new ProductService();
+        List<Product> list = productService.sortProductsByPriceFromLtoH();
+        for (Product o: list) {
+            System.out.println(o);
+        }
+    }
+
 }

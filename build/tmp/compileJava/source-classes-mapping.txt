@@ -44,9 +44,13 @@ com/cakemanager/service/ProductService.java
  com.cakemanager.service.ProductService
 com/cakemanager/controller/CategoryServlet.java
  com.cakemanager.controller.CategoryServlet
+com/cakemanager/controller/DetailServlet.java
+ com.cakemanager.controller.DetailServlet
 com/cakemanager/controller/ShopServlet.java
  com.cakemanager.controller.ShopServlet
 com/cakemanager/controller/ProductServlet.java
  com.cakemanager.controller.ProductServlet
-com/cakemanager/controller/DetailServlet.java
- com.cakemanager.controller.DetailServlet
+com/cakemanager/controller/SortHighToLowServlet.java
+ com.cakemanager.controller.SortHighToLowServlet
+com/cakemanager/controller/SortLowToHighServlet.java
+ com.cakemanager.controller.SortLowToHighServlet

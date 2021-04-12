@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 
+
 <body>
 
 <!-- Offcanvas Menu Begin -->
@@ -94,7 +95,7 @@
                             </ul>
                         </div>
                         <div class="header__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                            <a href="/index"><img src="img/logo.png" alt=""></a>
                         </div>
                         <div class="header__top__right">
                             <div class="header__top__right__links">
@@ -124,7 +125,7 @@
                             <ul class="dropdown">
                                 <li><a href="shoping-cart.jsp">Giỏ hàng</a></li>
                                 <li><a href="checkout.jsp">Thanh toán</a></li>
-                                <li><a href="./Class.html">Lớp học làm bánh</a></li>
+                                <li><a href="class.jsp">Lớp học làm bánh</a></li>
                             </ul>
                         </li>
                         <li><a href="blog.jsp">Bài viết</a></li>
@@ -167,7 +168,7 @@
                     <form action="#">
                         <c:forEach items="${listC}" var="o">
                             <a href="category?categoryId=${o.categoryId}"
-                               class="list-group-item ${tag == o.categoryId?"active":""}">${o.name}</a>
+                               class="list-group-item ${tag == o.categoryId?"active":""}" style="background-color: #f08632; color: white">${o.name}</a>
                         </c:forEach>
 
                     </form>
@@ -184,11 +185,11 @@
 
                 <div class="col-lg-4 col-md-4">
                     <div class="shop__option__right">
-                        <select>
-                            <option value="">Sắp xếp theo giá</option>
-                            <option value="">Thấp đến cao</option>
-                            <option value="">Cao xuống thấp</option>
-                        </select>
+                        <form style="border: 1px">
+                            <p>Sắp xếp theo giá</p>
+                            <a href="/sortH2L">Cao xuống thấp</a><br>
+                            <a href="/sortL2H">Thấp đến cao</a>
+                        </form>
                     </div>
                 </div>
             </div>
