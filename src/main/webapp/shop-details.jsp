@@ -210,7 +210,8 @@
 <%--                            <li>Tags: <span>Gadgets, minimalisstic</span></li>--%>
                         </ul>
                         <div class="product__details__option">
-                            <form action="ProductServlet?action=insert&productName=${product.getName()}&productPrice=${product.getUnitPrice()}&priceTotal=${product.getUnitPrice()}&userId=1&thumbnail=${product.getThumbnail()}" method="post">
+                            <c:if test="${sessionScope.account != null}">
+                            <form action="ProductServlet?action=insert&productName=${product.getName()}&productPrice=${product.getUnitPrice()}&priceTotal=${product.getUnitPrice()}&userId=${account.getUserId()}&thumbnail=${product.getThumbnail()}" method="post">
                             <div class="quantity">
                                 <div class="pro-qty">
                                     <input type="text" name="quantity" value="1">
@@ -221,6 +222,20 @@
 <%--                                <button class="primary-btn" type="submit">Add to cart</button>--%>
                                 <input class="primary-btn" style="border: none" type="submit" value="Add to cart"/>
                             </form>
+                            </c:if>
+                            <c:if test="${sessionScope.account == null}">
+                                <form action="login.jsp" method="post">
+                                    <div class="quantity">
+                                        <div class="pro-qty">
+                                            <input type="text" name="quantity" value="1">
+                                        </div>
+                                    </div>
+                                        <%--                            <a href="#" class="primary-btn">Add to cart</a>--%>
+                                        <%--                            <a href="#" class="heart__btn"><span class="icon_heart_alt"></span></a>--%>
+                                        <%--                                <button class="primary-btn" type="submit">Add to cart</button>--%>
+                                    <input class="primary-btn" style="border: none" type="submit" value="Add to cart"/>
+                                </form>
+                            </c:if>
                         </div>
                     </div>
                 </div>
@@ -302,93 +317,17 @@
                                 <h6><a href="/ProductServlet?action=view&id=${product.getProductId()}&categoryId=${product.getCategoryId()}">${product.getName()}</a></h6>
                                 <div class="product__item__price">$${product.getUnitPrice()}</div>
                                 <div class="cart_add">
-                                    <a href="/CartServlet?action=insert&productName=${product.getName()}&productPrice=${product.getUnitPrice()}&priceTotal=${product.getUnitPrice()}&userId=1&thumbnail=${product.getThumbnail()}">Add to cart</a>
+                                    <c:if test="${sessionScope.account != null}">
+                                    <a href="/CartServlet?action=insert&productName=${product.getName()}&productPrice=${product.getUnitPrice()}&priceTotal=${product.getUnitPrice()}&userId=${account.getUserId()}&thumbnail=${product.getThumbnail()}">Add to cart</a>
+                                    </c:if>
+                                    <c:if test="${sessionScope.account == null}">
+                                        <a href="login.jsp">Add to cart</a>
+                                    </c:if>
                                 </div>
                             </div>
                         </div>
                     </div>
                     </c:forEach>
-
-<%--                    <div class="col-lg-3">--%>
-<%--                        <div class="product__item">--%>
-<%--                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-2.jpg">--%>
-<%--                                <div class="product__label">--%>
-<%--                                    <span>Cupcake</span>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="product__item__text">--%>
-<%--                                <h6><a href="#">Cookies and Cream</a></h6>--%>
-<%--                                <div class="product__item__price">$30.00</div>--%>
-<%--                                <div class="cart_add">--%>
-<%--                                    <a href="#">Add to cart</a>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-lg-3">--%>
-<%--                        <div class="product__item">--%>
-<%--                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-3.jpg">--%>
-<%--                                <div class="product__label">--%>
-<%--                                    <span>Cupcake</span>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="product__item__text">--%>
-<%--                                <h6><a href="#">Gluten Free Mini Dozen</a></h6>--%>
-<%--                                <div class="product__item__price">$31.00</div>--%>
-<%--                                <div class="cart_add">--%>
-<%--                                    <a href="#">Add to cart</a>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-lg-3">--%>
-<%--                        <div class="product__item">--%>
-<%--                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-4.jpg">--%>
-<%--                                <div class="product__label">--%>
-<%--                                    <span>Cupcake</span>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="product__item__text">--%>
-<%--                                <h6><a href="#">Cookie Dough</a></h6>--%>
-<%--                                <div class="product__item__price">$25.00</div>--%>
-<%--                                <div class="cart_add">--%>
-<%--                                    <a href="#">Add to cart</a>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-lg-3">--%>
-<%--                        <div class="product__item">--%>
-<%--                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-5.jpg">--%>
-<%--                                <div class="product__label">--%>
-<%--                                    <span>Cupcake</span>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="product__item__text">--%>
-<%--                                <h6><a href="#">Vanilla Salted Caramel</a></h6>--%>
-<%--                                <div class="product__item__price">$05.00</div>--%>
-<%--                                <div class="cart_add">--%>
-<%--                                    <a href="#">Add to cart</a>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <div class="col-lg-3">--%>
-<%--                        <div class="product__item">--%>
-<%--                            <div class="product__item__pic set-bg" data-setbg="img/shop/product-6.jpg">--%>
-<%--                                <div class="product__label">--%>
-<%--                                    <span>Cupcake</span>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="product__item__text">--%>
-<%--                                <h6><a href="#">German Chocolate</a></h6>--%>
-<%--                                <div class="product__item__price">$14.00</div>--%>
-<%--                                <div class="cart_add">--%>
-<%--                                    <a href="#">Add to cart</a>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
                 </div>
             </div>
         </div>
