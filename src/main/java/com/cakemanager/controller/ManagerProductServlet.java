@@ -82,6 +82,7 @@ public class ManagerProductServlet extends HttpServlet {
         }
     }
     //Test trên local
+    //Test trên repo
     private void insertProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         float unitPrice = Float.parseFloat(request.getParameter("price"));
