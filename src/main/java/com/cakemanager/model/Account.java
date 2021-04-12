@@ -13,11 +13,8 @@ public class Account {
 
     }
 
-<<<<<<< HEAD
+
     public Account(int userId, String name, String phone, String email, String address, String password, boolean roll) {
-=======
-    public Account(int userId, String name, String password, String email, String phone, String address, boolean roll) {
->>>>>>> 133be7042df30085766f60bb81c7238ea729f9d8
         this.userId = userId;
         this.name = name;
         this.password = password;

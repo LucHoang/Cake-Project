@@ -1,31 +1,23 @@
+com/cakemanager/service/IndexService.java
+ com.cakemanager.service.IndexService
 com/cakemanager/model/OrderDetails.java
  com.cakemanager.model.OrderDetails
-<<<<<<< HEAD
+com/cakemanager/model/Product.java
+ com.cakemanager.model.Product
 com/cakemanager/controller/IndexServlet.java
  com.cakemanager.controller.IndexServlet
-com/cakemanager/model/Product.java
- com.cakemanager.model.Product
 com/cakemanager/controller/LoginServlet.java
  com.cakemanager.controller.LoginServlet
-=======
-com/cakemanager/model/Product.java
- com.cakemanager.model.Product
+com/cakemanager/model/Cart.java
+ com.cakemanager.model.Cart
 com/cakemanager/controller/CartServlet.java
  com.cakemanager.controller.CartServlet
-com/cakemanager/controller/LoginServlet.java
- com.cakemanager.controller.LoginServlet
-com/cakemanager/service/LoginService.java
- com.cakemanager.service.LoginService
-com/cakemanager/model/Customer.java
- com.cakemanager.model.Customer
 com/cakemanager/service/CartService.java
  com.cakemanager.service.CartService
->>>>>>> 133be7042df30085766f60bb81c7238ea729f9d8
 com/cakemanager/model/Orders.java
  com.cakemanager.model.Orders
 com/cakemanager/service/DatabaseConection.java
  com.cakemanager.service.DatabaseConection
-<<<<<<< HEAD
 com/cakemanager/controller/RegisterServlet.java
  com.cakemanager.controller.RegisterServlet
 com/cakemanager/model/Blog.java
@@ -38,29 +30,17 @@ com/cakemanager/model/Category.java
  com.cakemanager.model.Category
 com/cakemanager/service/LoginService.java
  com.cakemanager.service.LoginService
-=======
-com/cakemanager/model/Blog.java
- com.cakemanager.model.Blog
-com/cakemanager/model/Category.java
- com.cakemanager.model.Category
-com/cakemanager/model/Account.java
- com.cakemanager.model.Account
-com/cakemanager/service/ProductService.java
- com.cakemanager.service.ProductService
-com/cakemanager/service/ICartService.java
- com.cakemanager.service.ICartService
-com/cakemanager/model/Cart.java
- com.cakemanager.model.Cart
-com/cakemanager/controller/ProductServlet.java
- com.cakemanager.controller.ProductServlet
-com/cakemanager/service/IIndexService.java
- com.cakemanager.service.IIndexService
->>>>>>> 133be7042df30085766f60bb81c7238ea729f9d8
-com/cakemanager/service/IndexService.java
- com.cakemanager.service.IndexService
-com/cakemanager/service/RegisterService.java
- com.cakemanager.service.RegisterService
-com/cakemanager/model/Customer.java
- com.cakemanager.model.Customer
 com/cakemanager/controller/LogoutServlet.java
  com.cakemanager.controller.LogoutServlet
+com/cakemanager/model/Customer.java
+ com.cakemanager.model.Customer
+com/cakemanager/service/RegisterService.java
+ com.cakemanager.service.RegisterService
+com/cakemanager/service/ICartService.java
+ com.cakemanager.service.ICartService
+com/cakemanager/controller/ProductDetailServlet.java
+ com.cakemanager.controller.ProductDetailServlet
+com/cakemanager/service/ProductService.java
+ com.cakemanager.service.ProductService
+com/cakemanager/controller/ManagerProductServlet.java
+ com.cakemanager.controller.ManagerProductServlet

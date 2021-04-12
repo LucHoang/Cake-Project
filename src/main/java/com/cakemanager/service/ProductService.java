@@ -1,5 +1,6 @@
 package com.cakemanager.service;
 
+import com.cakemanager.model.Account;
 import com.cakemanager.model.Cart;
 import com.cakemanager.model.Category;
 import com.cakemanager.model.Product;
@@ -17,10 +18,104 @@ public class ProductService {
             " (?, ?, ?, ?, ?, ?);";
     private static final String SELECT__WHERE_CATEGORY_ID = "select * from products where categoryId =?";
     private static final String SELECT_CATEGORY_NAME_WHERE_PRODUCT_ID = "select category.name from category, products where category.categoryId = products.categoryId and products.productId =?";
+    private static final String SELECT_20_PRODUCT = "select * from products inner join category c on products.categoryId = c.categoryId limit 20;";
+    private static final String DELETE_FROM_ORDERDETAIL_WITH_PROID = "delete from orderdetails where productId = ?;";
+    private static final String DELETE_FROM_PRODUCT_WITH_PROID = "delete from products where productId = ?;";
+    private static final String INSERT_PRODUCT = "insert into products(name, unitPrice, quantityStock, productDescription, thumbnail, categoryId)" +
+            "value (?,?,?,?,?,?);";
+    private static final String SELECT_ALL_CATEGORY = "select * from category;";
 
-    public ProductService() {
-
+    public ProductService() {}
+    public List<Product> get20Product(){
+        List<Product> listPro = null;
+        Connection connection = DatabaseConection.getConnection();
+        if (connection != null) {
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(SELECT_20_PRODUCT);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                listPro = new ArrayList<>();
+                while (resultSet.next()) {
+                    int productId = resultSet.getInt("productId");
+                    String name = resultSet.getString("products.name");
+                    float unitPrice = resultSet.getFloat("unitPrice");
+                    int quantityStock = resultSet.getInt("quantityStock");
+                    String productDescription = resultSet.getString("productDescription");
+                    String thumbnail = resultSet.getString("thumbnail");
+                    int categoryId = resultSet.getInt("c.categoryId");
+                    String categoryName = resultSet.getString("c.name");
+                    Category category = new Category(categoryId, categoryName);
+                    Product product = new Product(productId, name, unitPrice, quantityStock, productDescription, thumbnail, categoryId, category);
+                    listPro.add(product);
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        return listPro;
     }
+
+    public List<Category> getAllCategory(){
+        List<Category> listCategory = null;
+        Connection connection = DatabaseConection.getConnection();
+        if (connection != null) {
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CATEGORY);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                listCategory = new ArrayList<>();
+                while (resultSet.next()) {
+                    int categoryId = resultSet.getInt("categoryId");
+                    String name = resultSet.getString("name");
+                    Category product = new Category(categoryId, name);
+                    listCategory.add(product);
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        return listCategory;
+    }
+
+    public boolean deleteProductSV(int productId){
+        System.out.println("aaaa");
+        Connection connection = DatabaseConection.getConnection();
+        if (connection != null) {
+            try {
+                PreparedStatement preparedDelOrderDetail = connection.prepareStatement(DELETE_FROM_ORDERDETAIL_WITH_PROID);
+                PreparedStatement preparedDelProduct= connection.prepareStatement(DELETE_FROM_PRODUCT_WITH_PROID);
+                preparedDelOrderDetail.setInt(1, productId);
+                preparedDelOrderDetail.executeUpdate();
+                System.out.println(preparedDelOrderDetail);
+                preparedDelProduct.setInt(1, productId);
+                preparedDelProduct.executeUpdate();
+                System.out.println(preparedDelProduct);
+                return true;
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    public boolean insertProduct(Product product){
+        Connection connection = DatabaseConection.getConnection();
+        if (connection != null) {
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PRODUCT);
+                preparedStatement.setString(1, product.getName());
+                preparedStatement.setFloat(2, product.getUnitPrice());
+                preparedStatement.setInt(3, product.getQuantityStock());
+                preparedStatement.setString(4, product.getProductDescription());
+                preparedStatement.setString(5, product.getThumbnail()); ;
+                preparedStatement.setInt(6, product.getCategoryId());
+                preparedStatement.executeUpdate();
+                return true;
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        return false;
+    }
+
 
     public Product selectProductById(int id) {
         Product product = null;
@@ -64,7 +159,7 @@ public class ProductService {
             while (rs.next()) {
                 int productId = rs.getInt("productId");
                 String name = rs.getString("name");
-                Float unitPrice = rs.getFloat("unitPrice");
+                float unitPrice = rs.getFloat("unitPrice");
                 int quantityStock = rs.getInt("quantityStock");
                 String productDescription = rs.getString("productDescription");
                 String thumbnail = rs.getString("thumbnail");

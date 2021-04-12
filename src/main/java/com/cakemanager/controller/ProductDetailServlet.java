@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet(name = "ProductServlet", value = "/ProductServlet")
-public class ProductServlet extends HttpServlet {
+public class ProductDetailServlet extends HttpServlet {
     private ProductService productService;
 
     public void init() {
@@ -113,12 +113,12 @@ public class ProductServlet extends HttpServlet {
         }
         switch (action) {
             case "insert":
-                try {
-                    insertCart(request, response);
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-                break;
+            try {
+                insertCart(request, response);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            break;
         }
     }
 }
