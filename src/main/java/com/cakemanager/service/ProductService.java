@@ -24,6 +24,12 @@ public class ProductService {
     private static final String INSERT_PRODUCT = "insert into products(name, unitPrice, quantityStock, productDescription, thumbnail, categoryId)" +
             "value (?,?,?,?,?,?);";
     private static final String SELECT_ALL_CATEGORY = "select * from category;";
+    private static final String SELECT_ALL_PRODUCTS = "select * from products;";
+    private static final String SEARCH_BY_NAME = "select * from products where name like ?;";
+    private static final String GET_PRODUCT_BY_PRODUCT_ID = "select * from products where productId = ?;";
+    private static final String SORT_PRODUCTS_BY_PRICE_FROM_H2L = "select * from products order by unitPrice desc;";
+    private static final String SORT_PRODUCTS_BY_PRICE_FROM_L2H = "select * from products order by unitPrice asc;";
+    private static final String GET_PRODUCT_BY_CATE_ID = "select * from products where categoryId = ?;";
 
     public ProductService() {}
     public List<Product> get20Product(){
@@ -207,4 +213,158 @@ public class ProductService {
         }
         return category;
     }
+
+    public List<Category> selectAllCategory() {
+        List<Category> list = new ArrayList<>();
+
+        try (Connection connection = DatabaseConection.getConnection();
+             PreparedStatement ps = connection.prepareStatement(SELECT_ALL_CATEGORY)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int categoryId = rs.getInt("categoryId");
+                String name = rs.getString("name");
+
+                list.add(new Category(categoryId, name));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<Product> selectAllProducts() {
+        List<Product> list = new ArrayList<>();
+
+        try (Connection connection = DatabaseConection.getConnection();
+             PreparedStatement ps = connection.prepareStatement(SELECT_ALL_PRODUCTS)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int productId = rs.getInt("productId");
+                String name = rs.getString("name");
+                Float unitPrice = rs.getFloat("unitPrice");
+                int quantityStock = rs.getInt("quantityStock");
+                String productDescription = rs.getString("productDescription");
+                String thumbnail = rs.getString("thumbnail");
+                int cId = rs.getInt("categoryId");
+
+                list.add(new Product(productId, name, unitPrice, quantityStock, productDescription, thumbnail, cId));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<Product> searchByName(String textSearch) {
+        List<Product> list = new ArrayList<>();
+
+        try {
+            Connection connection = DatabaseConection.getConnection();
+            PreparedStatement ps = connection.prepareStatement(SEARCH_BY_NAME);
+            ps.setString(1, "%" + textSearch + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int productId = rs.getInt("productId");
+                String name = rs.getString("name");
+                Float unitPrice = rs.getFloat("unitPrice");
+                int quantityStock = rs.getInt("quantityStock");
+                String productDescription = rs.getString("productDescription");
+                String thumbnail = rs.getString("thumbnail");
+                int cId = rs.getInt("categoryId");
+
+                list.add(new Product(productId, name, unitPrice, quantityStock, productDescription, thumbnail, cId));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public Product getProductByCateId(String productId) {
+        try {
+            Connection connection = DatabaseConection.getConnection();
+            PreparedStatement ps = connection.prepareStatement(GET_PRODUCT_BY_PRODUCT_ID);
+            ps.setString(1, productId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int pId = rs.getInt("productId");
+                String name = rs.getString("name");
+                Float unitPrice = rs.getFloat("unitPrice");
+                int quantityStock = rs.getInt("quantityStock");
+                String productDescription = rs.getString("productDescription");
+                String thumbnail = rs.getString("thumbnail");
+                int cId = rs.getInt("categoryId");
+
+                return new Product(pId, name, unitPrice, quantityStock, productDescription, thumbnail, cId);
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public List<Product> sortProductsByPriceFromHtoL() {
+        List<Product> list = new ArrayList<>();
+
+        try (Connection connection = DatabaseConection.getConnection();
+             PreparedStatement ps = connection.prepareStatement(SORT_PRODUCTS_BY_PRICE_FROM_H2L)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int productId = rs.getInt("productId");
+                String name = rs.getString("name");
+                Float unitPrice = rs.getFloat("unitPrice");
+                int quantityStock = rs.getInt("quantityStock");
+                String productDescription = rs.getString("productDescription");
+                String thumbnail = rs.getString("thumbnail");
+                int cId = rs.getInt("categoryId");
+
+                list.add(new Product(productId, name, unitPrice, quantityStock, productDescription, thumbnail, cId));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<Product> sortProductsByPriceFromLtoH() {
+        List<Product> list = new ArrayList<>();
+
+        try (Connection connection = DatabaseConection.getConnection();
+             PreparedStatement ps = connection.prepareStatement(SORT_PRODUCTS_BY_PRICE_FROM_L2H)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int productId = rs.getInt("productId");
+                String name = rs.getString("name");
+                Float unitPrice = rs.getFloat("unitPrice");
+                int quantityStock = rs.getInt("quantityStock");
+                String productDescription = rs.getString("productDescription");
+                String thumbnail = rs.getString("thumbnail");
+                int cId = rs.getInt("categoryId");
+
+                list.add(new Product(productId, name, unitPrice, quantityStock, productDescription, thumbnail, cId));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<Product> getAllProductByCateId(String categoryId) {
+        List<Product> list = new ArrayList<>();
+
+        try {
+            Connection connection = DatabaseConection.getConnection();
+            PreparedStatement ps = connection.prepareStatement(GET_PRODUCT_BY_CATE_ID);
+            ps.setString(1, categoryId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int productId = rs.getInt("productId");
+                String name = rs.getString("name");
+                Float unitPrice = rs.getFloat("unitPrice");
+                int quantityStock = rs.getInt("quantityStock");
+                String productDescription = rs.getString("productDescription");
+                String thumbnail = rs.getString("thumbnail");
+                int cId = rs.getInt("categoryId");
+
+                list.add(new Product(productId, name, unitPrice, quantityStock, productDescription, thumbnail, cId));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
 }
