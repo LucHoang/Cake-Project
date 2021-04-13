@@ -103,7 +103,7 @@ public class ManagerProductServlet extends HttpServlet {
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         String description = request.getParameter("description");
         String thumbnail = request.getParameter("thumbnail");
-        int categoryId = Integer.parseInt(request.getParameter("category"));
+        int categoryId = Integer.parseInt(request.getParameter("categoryId"));
         int PRODUCTID_FAKE = 0;
         Category CATEGORY_FAKE = new Category(0,"");
         Product product = new Product(PRODUCTID_FAKE,name,unitPrice,quantity,description,thumbnail,categoryId,CATEGORY_FAKE);
@@ -118,7 +118,7 @@ public class ManagerProductServlet extends HttpServlet {
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         String description = request.getParameter("description");
         String thumbnail = request.getParameter("thumbnail");
-        int categoryId = Integer.parseInt(request.getParameter("category"));
+        int categoryId = Integer.parseInt(request.getParameter("categoryId"));
         Category category = this.productService.selectCategoryByProductId(productId);
         Product product = new Product(productId,name,unitPrice,quantity,description,thumbnail,categoryId,category);
         this.productService.updateProduct(product);

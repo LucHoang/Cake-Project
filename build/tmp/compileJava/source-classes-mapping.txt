@@ -1,46 +1,50 @@
+com/cakemanager/controller/ManagerProductServlet.java
+ com.cakemanager.controller.ManagerProductServlet
+com/cakemanager/controller/IndexServlet.java
+ com.cakemanager.controller.IndexServlet
+com/cakemanager/service/CheckoutService.java
+ com.cakemanager.service.CheckoutService
+com/cakemanager/controller/CartServlet.java
+ com.cakemanager.controller.CartServlet
+com/cakemanager/model/Orders.java
+ com.cakemanager.model.Orders
+com/cakemanager/service/IIndexService.java
+ com.cakemanager.service.IIndexService
+com/cakemanager/model/Category.java
+ com.cakemanager.model.Category
+com/cakemanager/service/ProductService.java
+ com.cakemanager.service.ProductService
+com/cakemanager/service/ICartService.java
+ com.cakemanager.service.ICartService
+com/cakemanager/controller/ProductDetailServlet.java
+ com.cakemanager.controller.ProductDetailServlet
+com/cakemanager/controller/CheckoutServlet.java
+ com.cakemanager.controller.CheckoutServlet
 com/cakemanager/service/IndexService.java
  com.cakemanager.service.IndexService
 com/cakemanager/model/OrderDetails.java
  com.cakemanager.model.OrderDetails
 com/cakemanager/model/Product.java
  com.cakemanager.model.Product
-com/cakemanager/controller/IndexServlet.java
- com.cakemanager.controller.IndexServlet
-com/cakemanager/controller/LoginServlet.java
- com.cakemanager.controller.LoginServlet
+com/cakemanager/model/Customer.java
+ com.cakemanager.model.Customer
 com/cakemanager/model/Cart.java
  com.cakemanager.model.Cart
-com/cakemanager/controller/CartServlet.java
- com.cakemanager.controller.CartServlet
-com/cakemanager/service/ICartService.java
- com.cakemanager.service.ICartService
-com/cakemanager/model/Orders.java
- com.cakemanager.model.Orders
 com/cakemanager/service/CartService.java
  com.cakemanager.service.CartService
+com/cakemanager/service/DatabaseConection.java
+ com.cakemanager.service.DatabaseConection
 com/cakemanager/controller/RegisterServlet.java
  com.cakemanager.controller.RegisterServlet
 com/cakemanager/model/Blog.java
  com.cakemanager.model.Blog
-com/cakemanager/service/IIndexService.java
- com.cakemanager.service.IIndexService
 com/cakemanager/model/Account.java
  com.cakemanager.model.Account
-com/cakemanager/model/Category.java
- com.cakemanager.model.Category
-com/cakemanager/model/Customer.java
- com.cakemanager.model.Customer
-com/cakemanager/controller/LogoutServlet.java
- com.cakemanager.controller.LogoutServlet
 com/cakemanager/service/LoginService.java
  com.cakemanager.service.LoginService
-com/cakemanager/service/DatabaseConection.java
- com.cakemanager.service.DatabaseConection
+com/cakemanager/controller/LogoutServlet.java
+ com.cakemanager.controller.LogoutServlet
 com/cakemanager/service/RegisterService.java
  com.cakemanager.service.RegisterService
-com/cakemanager/controller/ManagerProductServlet.java
- com.cakemanager.controller.ManagerProductServlet
-com/cakemanager/service/ProductService.java
- com.cakemanager.service.ProductService
-com/cakemanager/controller/ProductDetailServlet.java
- com.cakemanager.controller.ProductDetailServlet
+com/cakemanager/controller/LoginServlet.java
+ com.cakemanager.controller.LoginServlet

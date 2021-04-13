@@ -8,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.Objects;
 
 @WebServlet(name = "LoginServlet", value = "/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -27,15 +28,17 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String passWord = request.getParameter("passWord");
         Account account = this.loginService.checkLogin(email,passWord);
-        if(account == null){
+        System.out.println(account.getName());
+//        if(false) {
+//            HttpSession session = request.getSession();
+//            session.setAttribute("account",account);
+////            session.setMaxInactiveInterval(10);
+//            response.sendRedirect("/index");
+//        }
+
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
             requestDispatcher.forward(request,response);
-        }else {
-            HttpSession session = request.getSession();
-            session.setAttribute("account",account);
-//            session.setMaxInactiveInterval(10);
-            response.sendRedirect("/index");
-        }
+
     }
 
 }

@@ -165,7 +165,7 @@
     </div>
 </div>
 <!-- Breadcrumb End -->
-
+<h2>DMKDJAJSAKLSKL</h2>
 <!-- Checkout Section Begin -->
 <section class="checkout spad">
     <div class="container">
@@ -178,6 +178,8 @@
                     product = (Product) request.getAttribute("product");
                 }
                 %>
+                    <h1><%=product.getCategoryId()%></h1>
+                    <h2>DMKDJAJSAKLSKL</h2>
                     <form action="/ManagerProductServlet?action=<%=actionInsertOrUpdate%>" onsubmit="alert('Thao tác thành công')" method="post">
                         <div class="row">
                             <div class="col-lg-11 col-md-11">
@@ -211,15 +213,17 @@
                                 </div>
                                 <div class="checkout__input">
                                     <p>Danh mục sản phẩm<span>*</span></p>
-                                    <select name="category">
-                                        <%if(product.getCategory().getName()!=null){
-                                            %>
-                                                <option value="<%=product.getCategory()%>" name="" selected><%=product.getCategory().getName()%></option>
-                                            <%;
-                                        }
+                                    <select name="categoryId">
+                                        <%
+                                            if(true){
+                                                %>
+                                                    <h1>Test st</h1>
+                                                    <option value="<%=product.getCategoryId()%>" name="" selected><%=product.getCategory().getName()%></option>
+                                                <%;
+                                            }
                                         %>
-                                        <c:forEach items="${listCategory}" var="category">
-                                            <option value="${category.categoryId}" name="">${category.name}</option>
+                                        <c:forEach items="${listCategory}" var="categoryI">
+                                            <option value="${categoryI.categoryId}" name="">${categoryI.name}</option>
                                         </c:forEach>
                                     </select>
                                 </div>
