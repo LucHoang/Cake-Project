@@ -145,7 +145,7 @@
           <ul>
             <li class="active"><a href="./index.jsp">Trang chủ</a></li>
             <li><a href="./about.jsp">Giới thiệu</a></li>
-            <li><a href="./shop.jsp">Cửa hàng</a></li>
+            <li><a href="/shop">Cửa hàng</a></li>
             <li><a href="#">Pages</a>
               <ul class="dropdown">
                 <li><a href="./shop-details.jsp">Shop Details</a></li>

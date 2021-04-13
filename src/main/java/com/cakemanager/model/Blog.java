@@ -8,6 +8,8 @@ public class Blog {
     private String descriptionShort;
     private String content;
     private Date datePost;
+    private int blogCateId;
+    private  String img;
 
     public Blog() {
 
@@ -19,6 +21,16 @@ public class Blog {
         this.descriptionShort = descriptionShort;
         this.content = content;
         this.datePost = datePost;
+    }
+
+    public Blog(int blogId, String tittle, String descriptionShort, String content, Date datePost, int blogCateId, String img) {
+        this.blogId = blogId;
+        this.tittle = tittle;
+        this.descriptionShort = descriptionShort;
+        this.content = content;
+        this.datePost = datePost;
+        this.blogCateId = blogCateId;
+        this.img = img;
     }
 
     public int getBlogId() {
