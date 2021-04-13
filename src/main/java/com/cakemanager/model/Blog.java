@@ -9,18 +9,20 @@ public class Blog {
     private String content;
     private Date datePost;
     private int blogCateId;
+    private String img;
 
     public Blog() {
 
     }
 
-    public Blog(int blogId, String tittle, String descriptionShort, String content, Date datePost, int blogCateId) {
+    public Blog(int blogId, String tittle, String descriptionShort, String content, Date datePost, int blogCateId, String img) {
         this.blogId = blogId;
         this.tittle = tittle;
         this.descriptionShort = descriptionShort;
         this.content = content;
         this.datePost = datePost;
         this.blogCateId = blogCateId;
+        this.img = img;
     }
 
     public int getBlogId() {
@@ -71,6 +73,14 @@ public class Blog {
         this.blogCateId = blogCateId;
     }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     @Override
     public String toString() {
         return "Blog{" +
@@ -80,6 +90,7 @@ public class Blog {
                 ", content='" + content + '\'' +
                 ", datePost=" + datePost +
                 ", blogCateId=" + blogCateId +
+                ", img='" + img + '\'' +
                 '}';
     }
 }

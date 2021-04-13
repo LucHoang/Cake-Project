@@ -27,16 +27,13 @@
     <div class="container">
         <div class="shop__option">
             <div class="row">
-
                 <div class="col-lg-3 col-md-3">
                     <form action="#">
                         <c:forEach items="${listC}" var="o">
                             <a href="category?categoryId=${o.categoryId}"
                                class="list-group-item ${tag == o.categoryId?"active":""}" style="background-color: #f08632; color: white">${o.name}</a>
                         </c:forEach>
-
                     </form>
-
                 </div>
                 <div class="col-lg-5 col-md-5">
                     <div class="shop__option__search">
@@ -80,23 +77,6 @@
             </c:forEach>
 
         </div>
-<%--        <div class="shop__last__option">--%>
-<%--            <div class="row">--%>
-<%--                <div class="col-lg-6 col-md-6 col-sm-6">--%>
-<%--                    <div class="shop__pagination">--%>
-<%--                        <a href="#">1</a>--%>
-<%--                        <a href="#">2</a>--%>
-<%--                        <a href="#">3</a>--%>
-<%--                        <a href="#"><span class="arrow_carrot-right"></span></a>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="col-lg-6 col-md-6 col-sm-6">--%>
-<%--                    <div class="shop__last__text">--%>
-<%--                        <p>Showing 1-9 of 10 results</p>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
     </div>
 </section>
 <!-- Shop Section End -->

@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Le Minh Duc
-  Date: 09/04/2021
-  Time: 10:32
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">

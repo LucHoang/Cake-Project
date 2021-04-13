@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class BlogService {
@@ -31,30 +32,23 @@ public class BlogService {
         return list;
     }
 
-    public static void main(String[] args) {
-        BlogService blogService = new BlogService();
 
-        List<BlogCategory> blogCategoryList = blogService.selectAllBlogCate();
-        for (BlogCategory o: blogCategoryList) {
-            System.out.println(o);
-        }
-    }
-    public List<Product> selectAllBlogs() {
-        List<Product> list = new ArrayList<>();
+    public List<Blog> selectAllBlogs() {
+        List<Blog> list = new ArrayList<>();
 
         try (Connection connection = DatabaseConection.getConnection();
              PreparedStatement ps = connection.prepareStatement(SELECT_ALL_BLOGS)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                int productId = rs.getInt("productId");
-                String name = rs.getString("name");
-                Float unitPrice = rs.getFloat("unitPrice");
-                int quantityStock = rs.getInt("quantityStock");
-                String productDescription = rs.getString("productDescription");
-                String thumbnail = rs.getString("thumbnail");
-                int cId = rs.getInt("categoryId");
+                int blogId = rs.getInt("blogId");
+                String title = rs.getString("title");
+                String descriptionShort = rs.getString("descriptionShort");
+                String content = rs.getString("content");
+                Date datePost = rs.getDate("datePost");
+                int blogCateId = rs.getInt("blogCateId");
+                String img = rs.getString("img");
 
-                list.add(new Product(productId, name, unitPrice, quantityStock, productDescription, thumbnail, cId));
+                list.add(new Blog(blogId, title, descriptionShort, content, datePost, blogCateId, img));
             }
         } catch (Exception e) {
         }
@@ -83,6 +77,15 @@ public class BlogService {
         } catch (Exception e) {
         }
         return list;
+    }
+
+    public static void main(String[] args) {
+        BlogService blogService = new BlogService();
+
+        List<Blog> blogList = blogService.selectAllBlogs();
+        for (Blog o: blogList) {
+            System.out.println(o);
+        }
     }
 
     public Product getBlogByBlogCateId(String productId) {

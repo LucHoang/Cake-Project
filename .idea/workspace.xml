@@ -5,25 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b622e85-c6a2-4c6e-b4a8-98b572b8e25d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.7/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d327974d-59f5-4ce7-854b-087c1b6f03a6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d327974d-59f5-4ce7-854b-087c1b6f03a6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/cakemanager/model/Blog.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/cakemanager/model/Blog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/cakemanager/model/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/cakemanager/model/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/cakemanager/service/BlogService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/cakemanager/service/BlogService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/cakemanager/service/DatabaseConection.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/cakemanager/service/DatabaseConection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/cakemanager/service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/cakemanager/service/ProductService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/Cake-project-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/Cake-project-1.0-SNAPSHOT.war" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cakemanager/model/Blog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cakemanager/model/Blog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cakemanager/model/BlogCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cakemanager/model/BlogCategory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cakemanager/service/BlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cakemanager/service/BlogService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cakemanager/service/DatabaseConection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cakemanager/service/DatabaseConection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/blog.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/blog.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cakemanager/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cakemanager/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/blog-details.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/blog-details.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/checkout.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/managerProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/managerProduct.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/menu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/shop.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/shop.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/shoping-cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/shoping-cart.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,13 +118,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -211,8 +223,8 @@
     </configuration>
     <list>
       <item itemvalue="Application.ProductService" />
-      <item itemvalue="Tomcat Server.Tomcat 9.0.44" />
       <item itemvalue="Application.BlogService" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.44" />
     </list>
     <recent_temporary>
       <list>
@@ -232,6 +244,7 @@
       <workItem from="1618200265583" duration="19043000" />
       <workItem from="1618236322576" duration="5418000" />
       <workItem from="1618275331831" duration="7544000" />
+      <workItem from="1618286915722" duration="5190000" />
     </task>
     <servers />
   </component>
@@ -253,16 +266,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/cakemanager/service/BlogService.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/cakemanager/service/BlogService.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/cakemanager/service/DatabaseConection.java</url>
           <line>19</line>

@@ -16,6 +16,9 @@
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
           rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -29,45 +32,41 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
+
 <body>
 
-<!-- Offcanvas Menu Begin -->
 <div class="offcanvas-menu-overlay"></div>
 <div class="offcanvas-menu-wrapper">
     <div class="offcanvas__cart">
         <div class="offcanvas__cart__links">
             <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-            <a href="#"><img src="img/icon/heart.png" alt=""></a>
         </div>
         <div class="offcanvas__cart__item">
-            <a href="/CartServlet"><img src="img/icon/cart.png" alt=""> <span>C</span>
-                <div class="cart__price">Giỏ hàng</div>
-            </a>
+            <c:if test="${sessionScope.account != null}">
+                <a href="/CartServlet?userId=${account.getUserId()}"><img src="img/icon/cart.png" alt=""> <span>C</span>
+                    <div class="cart__price">Giỏ hàng</div>
+                </a>
+            </c:if>
+            <c:if test="${sessionScope.account == null}">
+                <a href="login.jsp"><img src="img/icon/cart.png" alt=""> <span>C</span>
+                    <div class="cart__price">Giỏ hàng</div>
+                </a>
+            </c:if>
+
         </div>
     </div>
     <div class="offcanvas__logo">
-        <a href="index.jsp"><img src="img/logo.png" alt=""></a>
+        <a href="/index"><img src="img/logo.png" alt=""></a>
     </div>
     <div id="mobile-menu-wrap"></div>
     <div class="offcanvas__option">
         <ul>
-            <li>USD <span class="arrow_carrot-down"></span>
-                <ul>
-                    <li>VNĐ</li>
-                    <li>USD</li>
-                </ul>
-            </li>
-            <li>ENG <span class="arrow_carrot-down"></span>
-                <ul>
-                    <li>Vietnamese</li>
-                    <li>ENG</li>
-                </ul>
-            </li>
-            <li><a href="./login.jsp">Đăng nhập</a> <span class="arrow_carrot-down"></span></li>
+            <li><a href="/login.jsp">Đăng nhập</a> <span class="arrow_carrot-down"></span></li>
         </ul>
     </div>
 </div>
 <!-- Offcanvas Menu End -->
+
 <!-- Header Section Begin -->
 <header class="header">
     <div class="header__top">
@@ -77,14 +76,9 @@
                     <div class="header__top__inner">
                         <div class="header__top__left">
                             <ul>
-                                <li>USD <span class="arrow_carrot-down"></span>
-                                    <ul>
-                                        <li>VNĐ</li>
-                                        <li>USD</li>
-                                    </ul>
-                                </li>
+
                                 <c:if test="${sessionScope.account.roll}">
-                                    <li><b><a href="login.jsp">Quản lý sản phẩm</a></b></li>
+                                    <li><b><a href="/ManagerProductServlet">Quản lý sản phẩm</a></b></li>
                                 </c:if>
                                 <c:if test="${sessionScope.account != null}">
                                     <li><b><a href="#">Xin chào ${sessionScope.account.name}</a></b></li>
@@ -101,12 +95,18 @@
                         <div class="header__top__right">
                             <div class="header__top__right__links">
                                 <a href="/search" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-<%--                                <a href="#"><img src="img/icon/heart.png" alt=""></a>--%>
                             </div>
                             <div class="header__top__right__cart">
-                                <a href="/CartServlet"><img src="img/icon/cart.png" alt=""> <span>C</span>
-                                    <div class="cart__price">Giỏ hàng</div>
-                                </a>
+                                <c:if test="${sessionScope.account != null}">
+                                    <a href="/CartServlet?userId=${account.getUserId()}"><img src="img/icon/cart.png" alt=""> <span>C</span>
+                                        <div class="cart__price">Giỏ hàng</div>
+                                    </a>
+                                </c:if>
+                                <c:if test="${sessionScope.account == null}">
+                                    <a href="login.jsp"><img src="img/icon/cart.png" alt=""> <span>C</span>
+                                        <div class="cart__price">Giỏ hàng</div>
+                                    </a>
+                                </c:if>
                             </div>
                         </div>
                     </div>
@@ -123,17 +123,8 @@
                         <li class="active"><a href="/index">Trang chủ</a></li>
                         <li><a href="about.jsp">Giới thiệu</a></li>
                         <li><a href="/shop">Cửa hàng</a></li>
-<%--                        <li><a href="#">Pages</a>--%>
-<%--                            <ul class="dropdown">--%>
-<%--                                <li><a href="shoping-cart.jsp">Shoping Cart</a></li>--%>
-<%--                                <li><a href="checkout.jsp">Check Out</a></li>--%>
-<%--                                <li><a href="wisslist.jsp">Wisslist</a></li>--%>
-<%--                                <li><a href="class.jsp">Class</a></li>--%>
-<%--                                <li><a href="blog-details.jsp">Blog Details</a></li>--%>
-<%--                            </ul>--%>
-<%--                        </li>--%>
-                        <li><a href="blog.jsp">Bài viết</a></li>
-                        <li><a href="contact.jsp">Liên hệ</a></li>
+                        <li><a href="/blog.jsp">Blog</a></li>
+                        <li><a href="./contact.jsp">Liên hệ</a></li>
                     </ul>
                 </nav>
             </div>

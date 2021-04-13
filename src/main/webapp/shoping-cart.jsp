@@ -74,23 +74,11 @@
                                 <a href="#">Continue Shopping</a>
                             </div>
                         </div>
-<%--                        <div class="col-lg-6 col-md-6 col-sm-6">--%>
-<%--                            <div class="continue__btn update__btn">--%>
-<%--                                <a href="#"><i class="fa fa-spinner"></i> Update cart</a>--%>
-<%--&lt;%&ndash;                                    <input type="submit" value="Update cart"/>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                    <button type="submit">Update cart</button>&ndash;%&gt;--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
+
                     </div>
                 </div>
                 <div class="col-lg-4">
-<%--                    <div class="cart__discount">--%>
-<%--                        <h6>Discount codes</h6>--%>
-<%--                        <form action="#">--%>
-<%--                            <input type="text" placeholder="Coupon code">--%>
-<%--                            <button type="submit">Apply</button>--%>
-<%--                        </form>--%>
-<%--                    </div>--%>
+
                     <div class="cart__total">
                         <h6>Cart total</h6>
                         <ul>
