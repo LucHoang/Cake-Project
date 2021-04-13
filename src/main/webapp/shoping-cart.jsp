@@ -244,7 +244,7 @@
                             </c:forEach>
                             <li>Total <span>$ <c:out value = "${total}"/></span></li>
                         </ul>
-                        <a href="#" class="primary-btn">Proceed to checkout</a>
+                        <a href="/CheckoutServlet?userId=${account.getUserId()}" class="primary-btn">Proceed to checkout</a>
                     </div>
                 </div>
             </div>

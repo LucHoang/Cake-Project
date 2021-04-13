@@ -14,8 +14,8 @@ import java.util.List;
 
 public class ProductService {
     private static final String SELECT_FROM_PRODUCTS_WHERE_PRODUCT_ID = "select * from products where productId =?";
-    private static final String INSERT_CART_SQL = "INSERT INTO cart" + "  (productName, productPrice, quantity, priceTotal, userId, thumbnail) VALUES " +
-            " (?, ?, ?, ?, ?, ?);";
+    private static final String INSERT_CART_SQL = "INSERT INTO cart" + "  (productName, productPrice, quantity, priceTotal, userId, thumbnail, productId) VALUES " +
+            " (?, ?, ?, ?, ?, ?, ?);";
     private static final String SELECT__WHERE_CATEGORY_ID = "select * from products where categoryId =?";
     private static final String SELECT_CATEGORY_NAME_WHERE_PRODUCT_ID = "select category.name from category, products where category.categoryId = products.categoryId and products.productId =?";
     private static final String SELECT_20_PRODUCT = "select * from products inner join category c on products.categoryId = c.categoryId limit 20;";
@@ -256,6 +256,7 @@ public class ProductService {
             preparedStatement.setFloat(4, cart.getPriceTotal());
             preparedStatement.setInt(5, cart.getUserId());
             preparedStatement.setString(6, cart.getThumbnail());
+            preparedStatement.setInt(7, cart.getProductId());
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

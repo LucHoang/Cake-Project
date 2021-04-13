@@ -5,18 +5,27 @@ import java.util.Date;
 public class Orders {
     private int orderId;
     private Date orderDate;
-    private int customerId;
+    private int userId;
     private boolean status;
 
     public Orders() {
 
     }
 
-    public Orders(int orderId, Date orderDate, int customerId, boolean status) {
+    public Orders(int orderId, Date orderDate, int userId, boolean status) {
         this.orderId = orderId;
         this.orderDate = orderDate;
-        this.customerId = customerId;
+        this.userId = userId;
         this.status = status;
+    }
+
+    public Orders(int userId) {
+        this.userId = userId;
+    }
+
+    public Orders(int orderId, int userId) {
+        this.orderId = orderId;
+        this.userId = userId;
     }
 
     public int getOrderId() {
@@ -35,12 +44,12 @@ public class Orders {
         this.orderDate = orderDate;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public boolean isStatus() {

@@ -80,10 +80,27 @@ public class CartServlet extends HttpServlet {
         Float priceTotal = Float.parseFloat(request.getParameter("priceTotal"));
         int userId = Integer.parseInt(request.getParameter("userId"));
         String thumbnail = request.getParameter("thumbnail");
+        int productId = Integer.parseInt(request.getParameter("productId"));
+        int quantity = 1;
+        boolean isExist = false;
+        int cartId = 0;
 
-        Cart newCart = new Cart(productName, productPrice, priceTotal, thumbnail, userId);
-
-        cartService.insertCart(newCart);
+        List<Cart> carts = cartService.selectCart(userId);
+        for (Cart cart: carts) {
+            if (cart.getProductId() == productId) {
+                quantity = cart.getQuantity() + 1;
+                isExist = true;
+                cartId = cart.getCartId();
+                break;
+            }
+        }
+        if (isExist) {
+            Cart cart = new Cart(cartId, quantity);
+            cartService.updateCart(cart);
+        } else {
+            Cart newCart = new Cart(productName, productPrice, priceTotal, thumbnail, userId, productId);
+            cartService.insertCart(newCart);
+        }
 
         listCarts(request, response);
     }
