@@ -28,16 +28,18 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String passWord = request.getParameter("passWord");
         Account account = this.loginService.checkLogin(email,passWord);
+        response.sendRedirect("/login.jsp");
+
         System.out.println(account.getName());
-//        if(false) {
+        //        if(false) {
 //            HttpSession session = request.getSession();
 //            session.setAttribute("account",account);
 ////            session.setMaxInactiveInterval(10);
 //            response.sendRedirect("/index");
 //        }
 
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
-            requestDispatcher.forward(request,response);
+//        RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+//        requestDispatcher.forward(request,response);
 
     }
 
