@@ -8,13 +8,13 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="breadcrumb__text">
-                        <h2>Blog</h2>
+                        <h2>Bài viết</h2>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="breadcrumb__links">
-                        <a href="./index.html">Home</a>
-                        <span>Blog</span>
+                        <a href="/index">Trang chủ</a>
+                        <span>Bài viết</span>
                     </div>
                 </div>
             </div>
@@ -190,19 +190,19 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="blog__sidebar__item">
-                            <h5>NEWsLETTeR</h5>
-                            <p>Subscribe to our newsletter and get our newest updates right on your inbox.</p>
-                            <form action="#">
-                                <input type="text" placeholder="Your email">
-                                <label for="agg">
-                                    I agree to the terms & conditions
-                                    <input type="checkbox" id="agg">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <button type="submit" class="site-btn">Subscribe</button>
-                            </form>
-                        </div>
+<%--                        <div class="blog__sidebar__item">--%>
+<%--                            <h5>NEWsLETTeR</h5>--%>
+<%--                            <p>Subscribe to our newsletter and get our newest updates right on your inbox.</p>--%>
+<%--                            <form action="#">--%>
+<%--                                <input type="text" placeholder="Your email">--%>
+<%--                                <label for="agg">--%>
+<%--                                    I agree to the terms & conditions--%>
+<%--                                    <input type="checkbox" id="agg">--%>
+<%--                                    <span class="checkmark"></span>--%>
+<%--                                </label>--%>
+<%--                                <button type="submit" class="site-btn">Subscribe</button>--%>
+<%--                            </form>--%>
+<%--                        </div>--%>
                     </div>
                 </div>
             </div>

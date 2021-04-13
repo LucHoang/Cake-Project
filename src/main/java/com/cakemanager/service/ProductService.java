@@ -275,12 +275,4 @@ public class ProductService {
         return list;
     }
 
-    public static void main(String[] args) {
-        ProductService productService = new ProductService();
-        List<Product> list = productService.sortProductsByPriceFromLtoH();
-        for (Product o: list) {
-            System.out.println(o);
-        }
-    }
-
 }

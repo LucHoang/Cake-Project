@@ -44,9 +44,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <p class="copyright__text text-white"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://oidayroi.com" target="_blank">HoangSyLuc</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <p class="copyright__text text-white">
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://oidayroi.com" target="_blank">MD3-C1220G1</a>
                     </p>
                 </div>
                 <div class="col-lg-6">

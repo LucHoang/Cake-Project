@@ -100,8 +100,8 @@
                         </div>
                         <div class="header__top__right">
                             <div class="header__top__right__links">
-                                <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                                <a href="#"><img src="img/icon/heart.png" alt=""></a>
+                                <a href="/search" class="search-switch"><img src="img/icon/search.png" alt=""></a>
+<%--                                <a href="#"><img src="img/icon/heart.png" alt=""></a>--%>
                             </div>
                             <div class="header__top__right__cart">
                                 <a href="/CartServlet"><img src="img/icon/cart.png" alt=""> <span>C</span>
@@ -123,17 +123,16 @@
                         <li class="active"><a href="/index">Trang chủ</a></li>
                         <li><a href="about.jsp">Giới thiệu</a></li>
                         <li><a href="/shop">Cửa hàng</a></li>
-                        <li><a href="#">Pages</a>
-                            <ul class="dropdown">
-                                <li><a href="shop-details.jsp">Shop Details</a></li>
-                                <li><a href="shoping-cart.jsp">Shoping Cart</a></li>
-                                <li><a href="checkout.jsp">Check Out</a></li>
-                                <li><a href="wisslist.jsp">Wisslist</a></li>
-                                <li><a href="class.jsp">Class</a></li>
-                                <li><a href="blog-details.jsp">Blog Details</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="blog.jsp">Blog</a></li>
+<%--                        <li><a href="#">Pages</a>--%>
+<%--                            <ul class="dropdown">--%>
+<%--                                <li><a href="shoping-cart.jsp">Shoping Cart</a></li>--%>
+<%--                                <li><a href="checkout.jsp">Check Out</a></li>--%>
+<%--                                <li><a href="wisslist.jsp">Wisslist</a></li>--%>
+<%--                                <li><a href="class.jsp">Class</a></li>--%>
+<%--                                <li><a href="blog-details.jsp">Blog Details</a></li>--%>
+<%--                            </ul>--%>
+<%--                        </li>--%>
+                        <li><a href="blog.jsp">Bài viết</a></li>
                         <li><a href="contact.jsp">Liên hệ</a></li>
                     </ul>
                 </nav>
@@ -142,6 +141,3 @@
     </div>
 </header>
 <!-- Header Section End -->
-
-
-
