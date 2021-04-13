@@ -24,6 +24,12 @@ public class ProductService {
     private static final String INSERT_PRODUCT = "insert into products(name, unitPrice, quantityStock, productDescription, thumbnail, categoryId)" +
             "value (?,?,?,?,?,?);";
     private static final String SELECT_ALL_CATEGORY = "select * from category;";
+    private static final String UPDATE_PRODUCT = "update products" +
+                                                 " set name = ?,unitPrice = ?,quantityStock = ?,productDescription= ?,thumbnail = ?,categoryId = ?" +
+                                                 " where productId = ?;";
+    private static final String SELECT_WITHOUT_CATEGORYID = "select * from category where categoryId != ?";
+    private static final String SELECT_FROM_PRO_JOIN_CATE_WHERE_PRODUCT_ID = "select * from products as p inner join category as c on p.categoryId = c.categoryId\n" +
+                                                                             "where productId = ?;";
 
     public ProductService() {}
     public List<Product> get20Product(){
@@ -52,6 +58,53 @@ public class ProductService {
             }
         }
         return listPro;
+    }
+    public Product selectCategoryAndProductById(int productIdInput) {
+        Product product = null;
+        Connection connection = DatabaseConection.getConnection();
+        if (connection != null) {
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(SELECT_FROM_PRO_JOIN_CATE_WHERE_PRODUCT_ID);
+                preparedStatement.setInt(1,productIdInput);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                    int productId = resultSet.getInt("productId");
+                    String name = resultSet.getString("p.name");
+                    Float unitPrice = resultSet.getFloat("unitPrice");
+                    int quantityStock = resultSet.getInt("quantityStock");
+                    String productDescription = resultSet.getString("productDescription");
+                    String thumbnail = resultSet.getString("thumbnail");
+                    int categoryId = resultSet.getInt("categoryId");
+                    Category category = new Category(categoryId,resultSet.getString("c.name"));
+                    product = new Product(productId, name, unitPrice, quantityStock, productDescription, thumbnail, categoryId,category);
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        return product;
+    }
+
+    public List<Category> getAllCateWithoutCateIdSelected(int categoryInputId){
+        List<Category> listCategory = null;
+        Connection connection = DatabaseConection.getConnection();
+        if (connection != null) {
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(SELECT_WITHOUT_CATEGORYID);
+                preparedStatement.setInt(1,categoryInputId);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                listCategory = new ArrayList<>();
+                while (resultSet.next()) {
+                    int categoryId = resultSet.getInt("categoryId");
+                    String name = resultSet.getString("name");
+                    Category product = new Category(categoryId, name);
+                    listCategory.add(product);
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        return listCategory;
     }
 
     public List<Category> getAllCategory(){
@@ -116,6 +169,27 @@ public class ProductService {
         return false;
     }
 
+    public boolean updateProduct(Product product){
+        Connection connection = DatabaseConection.getConnection();
+        if (connection != null) {
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PRODUCT);
+                preparedStatement.setString(1, product.getName());
+                preparedStatement.setFloat(2, product.getUnitPrice());
+                preparedStatement.setInt(3, product.getQuantityStock());
+                preparedStatement.setString(4, product.getProductDescription());
+                preparedStatement.setString(5, product.getThumbnail()); ;
+                preparedStatement.setInt(6, product.getCategoryId());
+                preparedStatement.setInt(7,product.getProductId());
+                System.out.println(preparedStatement);
+                preparedStatement.executeUpdate();
+                return true;
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        return false;
+    }
 
     public Product selectProductById(int id) {
         Product product = null;

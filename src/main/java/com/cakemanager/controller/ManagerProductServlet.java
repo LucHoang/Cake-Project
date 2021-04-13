@@ -1,7 +1,6 @@
 package com.cakemanager.controller;
 
 import com.cakemanager.model.Account;
-import com.cakemanager.model.Cart;
 import com.cakemanager.model.Category;
 import com.cakemanager.model.Product;
 import com.cakemanager.service.LoginService;
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet(name = "ManagerProductServlet", value = "/ManagerProductServlet")
@@ -45,8 +43,13 @@ public class ManagerProductServlet extends HttpServlet {
             case "delete":
                 deleteProduct(request,response);
                 break;
-            case "viewPageCreateOrEdit":
-                viewPageCreateOrEdit(request,response);
+            case "edit":
+                break;
+            case "viewInsert":
+                viewPageInsert(request,response);
+                break;
+            case "viewUpdate":
+                viewPageUpdate(request,response);
                 break;
             default:
                 viewAllProduct(request, response);
@@ -63,10 +66,22 @@ public class ManagerProductServlet extends HttpServlet {
         dispatcher.forward(request, response);
 
     }
-    private void viewPageCreateOrEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void viewPageInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Category> listCategory = this.productService.getAllCategory();
         request.setAttribute("listCategory",listCategory);
         System.out.println(listCategory);
+        request.setAttribute("actionInsertOrUpdate","actionInsert");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("editInsertPro.jsp");
+        requestDispatcher.forward(request,response);
+    }
+
+    private void viewPageUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int productId = Integer.parseInt(request.getParameter("productId"));
+        Product product = this.productService.selectCategoryAndProductById(productId);
+        List<Category> listCategory = this.productService.getAllCateWithoutCateIdSelected(product.getCategoryId());
+        request.setAttribute("listCategory",listCategory);
+        request.setAttribute("product",product);
+        request.setAttribute("actionInsertOrUpdate","actionUpdate");
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("editInsertPro.jsp");
         requestDispatcher.forward(request,response);
     }
@@ -81,8 +96,7 @@ public class ManagerProductServlet extends HttpServlet {
             dispatcher = request.getRequestDispatcher("/ManagerProductServlet?message=error");
         }
     }
-    //Test trên local
-    //Test trên repo
+
     private void insertProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         float unitPrice = Float.parseFloat(request.getParameter("price"));
@@ -97,6 +111,19 @@ public class ManagerProductServlet extends HttpServlet {
         response.sendRedirect("/ManagerProductServlet");
     }
 
+    private void updateProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int productId = Integer.parseInt(request.getParameter("productId"));
+        String name = request.getParameter("name");
+        float unitPrice = Float.parseFloat(request.getParameter("price"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        String description = request.getParameter("description");
+        String thumbnail = request.getParameter("thumbnail");
+        int categoryId = Integer.parseInt(request.getParameter("category"));
+        Category category = this.productService.selectCategoryByProductId(productId);
+        Product product = new Product(productId,name,unitPrice,quantity,description,thumbnail,categoryId,category);
+        this.productService.updateProduct(product);
+        response.sendRedirect("/ManagerProductServlet");
+    }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -106,10 +133,11 @@ public class ManagerProductServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "create":
+            case "actionInsert":
                 insertProduct(request,response);
                 break;
-            case "edit":
+            case "actionUpdate":
+                updateProduct(request,response);
                 break;
             case "delete":
                 deleteProduct(request,response);
