@@ -51,7 +51,7 @@
                                         </div>
                                     </td>
                                     <td class="quantity__item">
-                                        <form action="CartServlet?action=update&id=${cart.getCartId()}" method="post">
+                                        <form action="CartServlet?action=update&id=${cart.getCartId()}&userId=${account.getUserId()}" method="post">
                                         <div class="quantity">
                                             <div class="pro-qty">
                                                     <input type="text" name="quantity" value="${cart.getQuantity()}">
@@ -61,7 +61,7 @@
                                         </form>
                                     </td>
                                     <td class="cart__price">$ <c:out value="${cart.getProductPrice()*cart.getQuantity()}"/></td>
-                                    <td class="cart__close"><a href="/CartServlet?action=delete&id=${cart.getCartId()}"><span class="icon_close"></span></a></td>
+                                    <td class="cart__close"><a href="/CartServlet?action=delete&id=${cart.getCartId()}&userId=${account.getUserId()}"><span class="icon_close"></span></a></td>
                                 </tr>
                             </c:forEach>
 
@@ -101,7 +101,7 @@
                             </c:forEach>
                             <li>Total <span>$ <c:out value = "${total}"/></span></li>
                         </ul>
-                        <a href="#" class="primary-btn">Proceed to checkout</a>
+                        <a href="/CheckoutServlet?userId=${account.getUserId()}" class="primary-btn">Proceed to checkout</a>
                     </div>
                 </div>
             </div>

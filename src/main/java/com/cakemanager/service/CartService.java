@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartService implements ICartService{
-    private static final String INSERT_CART_SQL = "INSERT INTO cart" + "  (productName, productPrice, priceTotal, userId, thumbnail) VALUES " +
-            " (?, ?, ?, ?, ?);";
+    private static final String INSERT_CART_SQL = "INSERT INTO cart" + "  (productName, productPrice, priceTotal, userId, thumbnail, productId) VALUES " +
+            " (?, ?, ?, ?, ?, ?);";
     private static final String SELECT_Product_BY_ID = "select id,name,email,country from products where id =?";
     private static final String SELECT_FROM_CART_WHERE_USER_ID = "select * from cart where userId =?";
     private static final String SELECT_ALL_ProductS = "select * from products";
@@ -34,6 +34,7 @@ public class CartService implements ICartService{
             preparedStatement.setFloat(3, cart.getPriceTotal());
             preparedStatement.setInt(4, cart.getUserId());
             preparedStatement.setString(5, cart.getThumbnail());
+            preparedStatement.setInt(6, cart.getProductId());
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -62,7 +63,8 @@ public class CartService implements ICartService{
                 Float priceTotal = rs.getFloat("priceTotal");
                 String thumbnail = rs.getString("thumbnail");
                 int userId = rs.getInt("userId");
-                carts.add(new Cart(cartId, productName, productPrice, quantity, priceTotal, thumbnail, userId));
+                int productId = rs.getInt("productId");
+                carts.add(new Cart(cartId, productName, productPrice, quantity, priceTotal, thumbnail, userId, productId));
             }
         } catch (SQLException e) {
             printSQLException(e);

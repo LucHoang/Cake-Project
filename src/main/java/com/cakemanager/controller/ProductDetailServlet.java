@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet(name = "ProductServlet", value = "/ProductServlet")
-public class ProductServlet extends HttpServlet {
+public class ProductDetailServlet extends HttpServlet {
     private ProductService productService;
 
     public void init() {
@@ -92,10 +92,27 @@ public class ProductServlet extends HttpServlet {
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         String thumbnail = request.getParameter("thumbnail");
         int userId = Integer.parseInt(request.getParameter("userId"));
+        int productId = Integer.parseInt(request.getParameter("productId"));
+        boolean isExist = false;
+        int cartId = 0;
 
-        Cart newCart = new Cart(productName, productPrice, quantity, priceTotal, thumbnail, userId);
-
-        productService.insertCart(newCart);
+        CartService cartService = new CartService();
+        List<Cart> carts = cartService.selectCart(userId);
+        for (Cart cart: carts) {
+            if (cart.getProductId() == productId) {
+                quantity = quantity + cart.getQuantity();
+                isExist = true;
+                cartId = cart.getCartId();
+                break;
+            }
+        }
+        if (isExist) {
+            Cart cart = new Cart(cartId, quantity);
+            cartService.updateCart(cart);
+        } else {
+            Cart newCart = new Cart(productName, productPrice, quantity, priceTotal, thumbnail, userId, productId);
+            productService.insertCart(newCart);
+        }
 
         CartServlet.listCarts(request, response);
     }
@@ -113,12 +130,12 @@ public class ProductServlet extends HttpServlet {
         }
         switch (action) {
             case "insert":
-                try {
-                    insertCart(request, response);
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-                break;
+            try {
+                insertCart(request, response);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            break;
         }
     }
 }
