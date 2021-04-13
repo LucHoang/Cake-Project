@@ -1,3 +1,6 @@
+<%@ page import="com.cakemanager.model.Product" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.cakemanager.model.Category" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -167,58 +170,80 @@
 <section class="checkout spad">
     <div class="container">
         <div class="checkout__form">
-            <form action="/ManagerProductServlet?action=create" onsubmit="alert('Thao tác thành công')" method="post">
-                <div class="row">
-                    <div class="col-lg-11 col-md-11">
-                        <h6 class="checkout__title">Thông tin sản phẩm</h6>
-                        <div class="checkout__input">
-                            <p>Tên<span>*</span></p>
-                            <input name="name" type="text" required="" maxlength="30">
-                        </div>
+            <% String actionInsertOrUpdate = request.getAttribute("actionInsertOrUpdate").toString();
+                Product product = null;
+                if(actionInsertOrUpdate.equals("actionInsert")){
+                    product = new Product(0,"",0,0,"","",1,new Category(1,null));
+                }else{
+                    product = (Product) request.getAttribute("product");
+                }
+                %>
+                    <form action="/ManagerProductServlet?action=<%=actionInsertOrUpdate%>" onsubmit="alert('Thao tác thành công')" method="post">
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-11 col-md-11">
+                                <h6 class="checkout__title">Thông tin sản phẩm</h6>
                                 <div class="checkout__input">
-                                    <p>Giá<span>*</span></p>
-                                    <input type="number" id="price" name="price" min="0" max="500000">
+                                    <p>Tên<span>*</span></p>
+                                    <input  name="name" type="text" required="" maxlength="30" value="<%=product.getName()%>">
+                                    <input name="productId" type="hidden"  value="<%=product.getProductId()%>">
+                                </div>
+                                <div class="row">
+                                    <div class="col-l-g6">
+                                        <div style="margin-left: 28px" class="checkout__input">
+                                            <p>Giá<span>*</span></p>
+                                            <input type="number" id="price" name="price" min="1" max="500000" value="<%=product.getUnitPrice()%>">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="checkout__input">
+                                            <p>Số lượng<span>*</span></p>
+                                            <input type="number" id="quantity" name="quantity" min="1" max="100" value="<%=product.getQuantityStock()%>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="checkout__input">
+                                    <p>Mô tả<span>*</span></p>
+                                    <textarea rows="4" cols="50" maxlength="1000" name="description" value="" name="description"><%=product.getProductDescription()%></textarea>
+                                </div>
+                                <div class="checkout__input">
+                                    <p>Đường dẫn ảnh<span>*</span></p>
+                                    <input type="text" maxlength="100" name="thumbnail" value="<%=product.getThumbnail()%>">
+                                </div>
+                                <div class="checkout__input">
+                                    <p>Danh mục sản phẩm<span>*</span></p>
+                                    <select name="category">
+                                        <%if(product.getCategory().getName()!=null){
+                                            %>
+                                                <option value="<%=product.getCategory()%>" name="" selected><%=product.getCategory().getName()%></option>
+                                            <%;
+                                        }
+                                        %>
+                                        <c:forEach items="${listCategory}" var="category">
+                                            <option value="${category.categoryId}" name="">${category.name}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                                <div class="row" style="margin-top:50px">
+                                    <div class="col-lg-4">
+
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="checkout__input">
+                                            <a class="primary-btn" href="/ManagerProductServlet" style="width: 100%;text-align: center;">Huỷ</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="checkout__input">
+                                            <input class="primary-btn" style="border: none;" type="submit" value="Xác nhận">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Số lượng<span>*</span></p>
-                                    <input type="number" id="quantity" name="quantity" min="0" max="100">
-                                </div>
-                            </div>
                         </div>
-                        <div class="checkout__input">
-                            <p>Mô tả<span>*</span></p>
-                            <textarea rows="4" cols="50" maxlength="1000" name="description"></textarea>
-                        </div>
-                        <div class="checkout__input">
-                            <p>Đường dẫn ảnh<span>*</span></p>
-                            <input type="text" maxlength="100" name="thumbnail">
-                        </div>
-                        <div class="checkout__input">
-                            <p>Danh mục sản phẩm<span>*</span></p>
-                            <select name="category">
-                                <c:forEach items="${listCategory}" var="category">
-                                    <option value="${category.categoryId}" name="">${category.name}</option>
-                                </c:forEach>
-                            </select>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <input class="primary-btn" style="border: none;margin-top:10px " type="submit" value="Xác nhận">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
+                    </form>
+                <%;
+            %>
+
         </div>
     </div>
 </section>

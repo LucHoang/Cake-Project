@@ -13,7 +13,7 @@
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="breadcrumb__text">
                     <h2>Quản lý sản phẩm</h2>
-                    <a class="primary-btn" href="/ManagerProductServlet?action=viewPageCreateOrEdit" style="margin-top: 10px">Thêm mới</a>
+                    <a class="primary-btn" href="/ManagerProductServlet?action=viewInsert" style="margin-top: 10px">Thêm mới</a>
                 </div>
             </div>
         </div>
@@ -67,10 +67,11 @@
                                         </div>
                                     </td>
                                     <td class="cart__close">
-                                        <span class="glyphicon glyphicon-pencil"></span>
+                                        <a onclick="return confirm('Bạn chắc muốn sửa sản phẩm này chứ?')" href="/ManagerProductServlet?action=viewUpdate&productId=${product.productId}" ><span class="glyphicon glyphicon-pencil"></span></a>
                                     </td>
+                                    <%! boolean checkDelete = true; %>
                                     <td class="cart__close">
-                                        <a href="/ManagerProductServlet?action=delete&productId=${product.productId}"><span class="glyphicon glyphicon-trash"></span></a>
+                                        <a onclick="return confirm('Bạn chắc muốn xoá sản phẩm này chứ?')" href="/ManagerProductServlet?action=delete&productId=${product.productId}" ><span class="glyphicon glyphicon-trash"></span></a>
                                     </td>
                                     </td>
                                 </tr>
@@ -110,7 +111,11 @@
     </div>
 </div>
 <!-- Search End -->
-
+<script>
+    function confirm_delete() {
+        return confirm('Bạn chắc muốn xoá sản phẩm này?');
+    }
+</script>
 <!-- Js Plugins -->
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
