@@ -8,6 +8,26 @@ public class Product {
     private String productDescription;
     private String thumbnail;
     private int categoryId;
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Product(int productId, String name, float unitPrice, int quantityStock, String productDescription, String thumbnail, int categoryId, Category category) {
+        this.productId = productId;
+        this.name = name;
+        this.unitPrice = unitPrice;
+        this.quantityStock = quantityStock;
+        this.productDescription = productDescription;
+        this.thumbnail = thumbnail;
+        this.categoryId = categoryId;
+        this.category = category;
+    }
 
     public Product() {
 
